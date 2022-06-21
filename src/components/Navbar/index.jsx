@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
-import "../../assets/styles/nav.scss"
+import "../../assets/styles/nav.scss";
 import ball from "../../assets/images/pokeball.png"
 
 const Navbar = () => {
