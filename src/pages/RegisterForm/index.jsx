@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { useSetAtom } from "jotai";
 import { userAtom, JWT } from "store/atoms";
-import "./style.css";
+import "../../assets/styles/forms.scss";
 
 const RegisterForm = () => {
   const [ email, setEmail ] = useState("");
