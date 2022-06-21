@@ -3,8 +3,91 @@
 
 :root {
     --light: #eaf4a9;
-    --yellow: #eec30e;
-    --blue: #375394 ;
+    --yellow: #FFCC00 ;
+    --blue: #0075BE  ;
     --grey: rgb(236, 233, 233);
 }
 
+p, a {
+    font-family: "TTVTechPrecomput";
+    font-size: xx-large;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.pokeball-toggler {
+    z-index: 110;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    top: 20px;
+    right: 50px;
+    transition: 1s ease-in-out;
+    animation: comeToScreen 1s;
+}
+
+.pokeball-animation {
+    transition: 1s ease-in-out;
+    transform: rotate(360deg);
+}
+
+.navbar {
+    position: fixed;
+    z-index:100;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: #DFDFDF ;
+    transition: 1s ease-in-out;
+}
+
+.closed-navbar {
+    transition: 1s ease-in-out;
+    transform: translateY(-100%);
+}
+
+.nav a:link, .nav a:visited {
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    color: var(--blue);
+}
+
+.nav a:hover, .nav a:active {
+    color:#0A285F;
+}
+
+.nav li {
+    margin: 20px 0;
+}
+
+.nav ul {
+    list-style: none;
+}
+
+.nav-title {
+    font-size: xx-large;
+    font-family: "Pokemon Solid";
+    color: var(--yellow);
+    -webkit-text-stroke: 2px var(--blue);
+    text-shadow: -2px 2px #0A285F;
+    padding: 20px 0;
+}
+
+.high-nav {
+    background-color: #DFDFDF ;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.carousel-wrapper img{
+    height: calc(100vh);
+}
+
+@keyframes comeToScreen {
+    0% { transform: translateX(100%);}
+}

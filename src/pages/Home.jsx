@@ -1,9 +1,18 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
+import { BrowserRouter } from 'react-router-dom'
 
 const Home = () => {
     return (
         <>
-            <p>Page d'accueil</p>
+            <BrowserRouter>
+                <Navbar />
+            </BrowserRouter>
+            <div className="row">
+                <div className="col-md-4"><p>Hello</p></div>
+                <div className="col-md-4"><p>World</p></div>
+                <div className="col-md-4"><p>Love</p></div>
+            </div>
         </>
     )
 }
