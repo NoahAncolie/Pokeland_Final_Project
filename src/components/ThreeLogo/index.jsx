@@ -1,4 +1,4 @@
-import React, { Suspense, useRef, useState } from "react";
+import React, { Suspense, useRef, useState, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import "../../assets/styles/rondoudou.scss"
@@ -23,15 +23,27 @@ function Model({ ...props }) {
 }
 
 const ThreeLogo = () => {
-    const ref = useRef()
+
+    const [posX, setPosX] = useState(0)
+
+    const moveModel = (x, y) => {
+      setPosX(x / 10000)
+    }
+
+    useEffect(() => {
+      window.addEventListener("mousemove", function(event){
+        moveModel(event.clientX, event.clientY)
+      })
+  });
+
     return (
         <>
-            <Canvas className="canvas">
+            <Canvas className="canvas" camera={{position: [-0.2,0.5,-0.2]}}>
                 <Suspense fallback={null}>
                     <ambientLight />
                     <spotLight intensity={1} angle={0.1} penumbra={1} />
-                    <Model />
-                    <OrbitControls enlablePan={true} enlableZoom={true} enableRotate={true}/>
+                    <Model position={[0,0,0]} rotation={[0.5, 0.1 + posX, -0.3]}/>
+                    <OrbitControls enlablePan={true} enableRotate={true}/>
                 </Suspense>
             </Canvas>
         </>

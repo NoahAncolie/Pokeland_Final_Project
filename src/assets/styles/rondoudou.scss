@@ -4,7 +4,7 @@
 
 .home-title {
     position: absolute;
-    z-index: 101;
+    z-index: 90;
     width: 100%;
     text-align: center;
     font-size: 90px;
@@ -17,4 +17,45 @@
 
 .homepage {
     text-align: center;
+}
+
+.websiteInfos {
+    position: fixed;
+    background-color : #0075be69 ;
+    border-radius: 5px;
+    top: 20px;
+    left: 15px;
+    width: 20vw;
+    color: #DFDFDF;
+    animation: 1s slideIn ease-in-out;
+}
+
+.catcher {
+    position: fixed;
+    background-color : #0075be69 ;
+    border-radius: 5px;
+    bottom: 30vh;
+    width: 100vw;
+    color: #DFDFDF;
+}
+
+.webInfo-list {
+    text-align: left;
+}
+
+.poke-letter {
+    padding: 2px;
+}
+
+.grow {
+    animation: grow 2s ease-in-out;
+}
+
+@keyframes grow {
+    50% {font-size: 150px;}
+    70% {font-size: 60px;}
+}
+
+@keyframes slideIn {
+    0% {transform: translateY(-100%);}
 }
