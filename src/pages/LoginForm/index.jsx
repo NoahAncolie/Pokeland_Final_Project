@@ -73,7 +73,7 @@ const LoginForm = () => {
             />
           </div>
 
-          <div className="form__group">
+          <div className="form__group forgot-password">
             <input
               type="password"
               placeholder="Password"
@@ -84,9 +84,8 @@ const LoginForm = () => {
               className="form__input"
             />
           </div>
-
-
-          <input className="btn" type="submit" value="Se connecter" />
+         <input className="btn" type="submit" value="Se connecter" />
+         <Link to="/forgotpassword" id="forgot-pwd">Mot de passe oublié ?</Link>
         </form>
       </div>
         </>
