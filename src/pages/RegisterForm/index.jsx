@@ -33,7 +33,7 @@ const RegisterForm = () => {
         sameSite: "none",
         secure: true
       })  
-      return (response.json())
+      return response.json()
     }).then((response) => {
         console.log(response);
       setUser(response.user);

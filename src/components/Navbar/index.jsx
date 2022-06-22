@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import React, { useEffect } from "react";
 import "../../assets/styles/nav.scss";
-import ball from "../../assets/images/pokeball.png"
+import ball from "../../assets/images/pokeball.png";
+import Cookies from "js-cookie";
+import { useSetAtom, useAtomValue } from "jotai";
+import { userAtom, JWT } from "store/atoms";
 
 const Navbar = () => {
+
+    const setToken = useSetAtom(JWT);
+    const setUser = useSetAtom(userAtom);
+    const jwt = useAtomValue(JWT);
 
     const ToggleNav = () => {
         document.getElementById('ball').classList.toggle('pokeball-animation')
@@ -14,6 +21,29 @@ const Navbar = () => {
             ToggleNav()
         })
     }, []);
+
+    function logout() {
+        console.log(Cookies.get('token'));
+        fetch("https://pokeland-api.herokuapp.com/users/sign_out", {
+         method: "delete",
+         headers: {
+             "Authorization": Cookies.get('token'),
+             "Content-Type": "application/json"
+         }
+         }).then((response) => {
+            console.log(response)
+        })
+         Cookies.remove('token', {
+             sameSite: "none",
+             secure: true
+            })
+            Cookies.remove('user', {
+            sameSite: "none",
+            secure: true
+            })
+            setToken("");
+            setUser("");  
+    }
 
     return (
         <>
@@ -34,23 +64,13 @@ const Navbar = () => {
                             </svg>
                             &nbsp;&nbsp;Produits
                         </Link></li>
-                        <li><Link to="/profil" onClick={ToggleNav}>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-                                <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z" />
-                            </svg>
-                            &nbsp;&nbsp;Profil
-                        </Link></li>
+                        {jwt === "" ?
+                        <>
                         <li><Link to="/connect" onClick={ToggleNav}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
                                 <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z" />
                             </svg>
                             &nbsp;&nbsp;Se connecter
-                        </Link></li>
-                        <li><Link to="/disconnect" onClick={ToggleNav}>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                                <path d="M624 448h-80V113.45C544 86.19 522.47 64 496 64H384v64h96v384h144c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM312.24 1.01l-192 49.74C105.99 54.44 96 67.7 96 82.92V448H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h336V33.18c0-21.58-19.56-37.41-39.76-32.17zM264 288c-13.25 0-24-14.33-24-32s10.75-32 24-32 24 14.33 24 32-10.75 32-24 32z" />
-                            </svg>
-                            &nbsp;&nbsp;Se déconnecter
                         </Link></li>
                         <li><Link to="/register" onClick={ToggleNav}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -58,6 +78,23 @@ const Navbar = () => {
                             </svg>
                             &nbsp;&nbsp;S'enregistrer
                         </Link></li>
+                        </>
+                        :
+                        <>
+                        <li><Link to="/profil" onClick={ToggleNav}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z" />
+                            </svg>
+                            &nbsp;&nbsp;Profil
+                        </Link></li>
+                        <li><Link to="/disconnect" onClick={() => { ToggleNav(); logout();}}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                                <path d="M624 448h-80V113.45C544 86.19 522.47 64 496 64H384v64h96v384h144c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM312.24 1.01l-192 49.74C105.99 54.44 96 67.7 96 82.92V448H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h336V33.18c0-21.58-19.56-37.41-39.76-32.17zM264 288c-13.25 0-24-14.33-24-32s10.75-32 24-32 24 14.33 24 32-10.75 32-24 32z" />
+                            </svg>
+                            &nbsp;&nbsp;Se déconnecter
+                        </Link></li>
+                        </>
+                        }
                     </ul>
                 </div>
             </div>
