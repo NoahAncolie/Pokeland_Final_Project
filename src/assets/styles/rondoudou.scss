@@ -1,0 +1,20 @@
+.my-canvas {
+    height: 100vh;
+}
+
+.home-title {
+    position: absolute;
+    z-index: 101;
+    width: 100%;
+    text-align: center;
+    font-size: 90px;
+    font-family: "Pokemon Solid";
+    color: var(--yellow);
+    -webkit-text-stroke: 5px var(--blue);
+    text-shadow: -8px 8px #0A285F;
+    padding: 60px 0;
+}
+
+.homepage {
+    text-align: center;
+}
