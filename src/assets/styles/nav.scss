@@ -6,6 +6,12 @@
     --yellow: #FFCC00 ;
     --blue: #0075BE  ;
     --grey: rgb(236, 233, 233);
+    --dark-blue: #0A285F;
+    --transparent-dark-blue: #0a285f7c;
+}
+
+* {
+    scrollbar-color: #0075BE #00000000;
 }
 
 p, a {
@@ -19,7 +25,7 @@ li, .text-gameboy {
 }
 
 body, html {
-    background-image: url('https://www.10wallpaper.com/wallpaper/2560x1600/1203/blue_galaxy-Space_exploration_secret_wallpaper_2560x1600.jpg');
+    background-image: url('Wallpaper.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
