@@ -43,7 +43,7 @@ const ThreeLogo = () => {
                     <ambientLight />
                     <spotLight intensity={1} angle={0.1} penumbra={1} />
                     <Model position={[0,0,0]} rotation={[0.5, 0.1 + posX, -0.3]}/>
-                    <OrbitControls enlablePan={true} enableRotate={true}/>
+                    <OrbitControls enlablePan={true} enableRotate={true} enlableZoom={false}/>
                 </Suspense>
             </Canvas>
         </>
