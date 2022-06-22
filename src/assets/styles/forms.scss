@@ -1,4 +1,7 @@
-
+.row {
+    margin: 0;
+    padding: 0;
+}
 
 .user {
     width: 90%;
@@ -7,6 +10,7 @@
 }
 
 .user__header {
+    margin-bottom: 100px;
     text-align: center;
     opacity: 0;
     transform: translate3d(0, 500px, 0);
@@ -15,16 +19,14 @@
 }
 
 .user__title {
-    
-    margin-bottom: -10px;
     font-weight: 500;
-    color: black;
+    font-size: 50px;
+    color: var(--grey);
 }
 
 .form {
-    margin-top: 40px;
+    margin-top: 150px;
     border-radius: 6px;
-    border: solid 1px black;
     overflow: hidden;
     opacity: 0;
     transform: translate3d(0, 500px, 0);
@@ -42,7 +44,13 @@
     -webkit-appearance: none;
     border: 0;
     outline: 0;
-    transition: 0.3s;
+    transition: 0.2s;
+    margin: 20px 0;
+    border-radius: 2px;
+}
+
+.form__input:focus {
+    outline: 4px solid var(--blue);
 }
 
 .btn {
@@ -50,13 +58,43 @@
     width: 100%;
     padding: 20px;
     -webkit-appearance: none;
-    outline: 0;
-    border: 0;
-    color: rgb(3, 3, 3);
-    background-color: var(--grey);
+    outline: none;
+    border: none;
+    color: var(--grey);
+    
+    background: linear-gradient(to right, var(--blue), var(--blue), var(--transparent-dark-blue) 100%);
+    background-position: 0% 100%;
+    background-size: 0 100%;
+    background-repeat:no-repeat;
+
     transition: 0.3s;
     font-family: "TTVTechPrecomput";
+    font-size: xx-large;
+    border-radius: 2px;
+}
+
+.btn:hover {
+    color: var(--grey);
+    background-size: 100% 100%;
+}
+
+.form-background {
+    width: 100%;
+    min-height: 100vh;
+    max-height: 100%;
+    background-color: var(--transparent-dark-blue);
+}
+
+.change-form:link, .change-form:visited {
+    text-decoration: none;
+    color: var(--grey);
+    transition: 0.2s;
     font-size: x-large;
+}
+
+.change-form:hover, .change-form:active {
+    text-decoration:double;
+    color: var(--blue);
 }
 
 @keyframes NO {
