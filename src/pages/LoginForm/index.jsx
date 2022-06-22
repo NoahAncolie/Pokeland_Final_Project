@@ -4,6 +4,8 @@ import Cookies from "js-cookie";
 import { useSetAtom } from "jotai";
 import { userAtom, JWT } from "store/atoms";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const LoginForm = () => {
 
@@ -12,6 +14,8 @@ const LoginForm = () => {
 
     const setToken = useSetAtom(JWT);
     const setUser = useSetAtom(userAtom);
+    const navigate = useNavigate();
+
 
     function fetchData(e) {
 
@@ -43,8 +47,8 @@ const LoginForm = () => {
             secure: true
           }) 
         })
-        .catch((err) => console.error(err));
-    }
+          navigate('/')
+      }
 
 
     return(
