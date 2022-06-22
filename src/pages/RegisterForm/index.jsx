@@ -4,6 +4,7 @@ import { useSetAtom } from "jotai";
 import { userAtom, JWT } from "store/atoms";
 import { Link } from "react-router-dom";
 import "../../assets/styles/forms.scss";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +13,7 @@ const RegisterForm = () => {
 
   const setUser = useSetAtom(userAtom);
   const setToken = useSetAtom(JWT);
-
+  const navigate = useNavigate();
 
   function fetchData(e) {
     e.preventDefault();
@@ -33,8 +34,8 @@ const RegisterForm = () => {
       Cookies.set('token', response.headers.get("Authorization"), {
         sameSite: "none",
         secure: true
-      })
-      return (response.json())
+      })  
+      return response.json()
     }).then((response) => {
       console.log(response);
       setUser(response.user);
@@ -43,8 +44,8 @@ const RegisterForm = () => {
         secure: true
       })
     })
-      .catch((err) => console.error(err));
-  };
+    navigate('/connect')    
+};
 
 
 
