@@ -9,15 +9,15 @@ import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
 
-    const [ email, setEmail ] = useState("");
-    const [ password, setPassword ] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
     const setToken = useSetAtom(JWT);
     const setUser = useSetAtom(userAtom);
     const navigate = useNavigate();
 
 
-    function fetchData(e) {
+  function fetchData(e) {
 
         e.preventDefault();
         fetch("https://pokeland-api.herokuapp.com/users/sign_in", {
@@ -51,27 +51,29 @@ const LoginForm = () => {
       }
 
 
-    return(
-        <>
-             <div className="user">
-        <header className="user__header">
-          <h2 className="user__title">
-            Connecte toi 👇
-          </h2>
-        </header>
+  return (
+    <div className="form-background">
+      <div className="row">
+        <div className="col-sm-0 col-lg-4"></div>
+        <div className="col-lg-4 form">
+          <header className="user__header">
+            <h2 className="user__title">
+              Connecte toi ici. 👇
+            </h2>
+          </header>
 
-        <form className="form" id="form" onSubmit={fetchData} >
-          <div className="form__group">
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="form__input"
-            />
-          </div>
+          <form className="" id="form" onSubmit={fetchData} >
+            <div className="">
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="form__input"
+              />
+            </div>
 
           <div className="form__group forgot-password">
             <input
@@ -88,8 +90,9 @@ const LoginForm = () => {
          <Link to="/forgotpassword" id="forgot-pwd">Mot de passe oublié ?</Link>
         </form>
       </div>
-        </>
-    )
+    </div>
+    </div>
+  )
 }
 
 export default LoginForm;
