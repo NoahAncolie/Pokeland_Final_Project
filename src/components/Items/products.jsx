@@ -1,50 +1,39 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import Item from './Item';
+import "assets/styles/products.scss"
 
+const Products = () => {
+    const [products, setProducts] = useState("")
 
+    const loadProducts = (datas) => {
+        setProducts(JSON.stringify(datas))
+        console.log(datas)
+    }
 
+    useEffect(() => {
+        fetch('https://pokeland-api.herokuapp.com/products', {
+            method: "get",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+        ).then((response) => { return response.json() })
+            .then((response) => loadProducts(response))
+    }, [])
 
-
-    const Products = () => {
-    return(
-
-    <>
-       
-       <section class="container">
-    <div class="card">
-        <div class="card-image card-1"></div>
-        <h2 class="tit">Coffret pokemon celebration 25ans</h2>
-        <p class="pa">ZACIAN</p>
-        <button className="button-buy"><Link to="/buyitem">Acheter</Link></button>
-    </div>
-    <div class="card">
-        <div class="card-image card-2"></div>
-        <h2 class="tit">Coffret pokemon celebration 25ans</h2>
-        <p class="pa">DRACAUFEU</p>
-        <button className="button-buy"><Link to="/buyitem">Acheter</Link></button>
-    </div>
-    <div class="card">
-        <div class="card-image card-3"></div>
-        <h2 class="tit">Coffret pokemon celebration 25ans</h2>
-        <p class="pa">LANSSORIEN</p>
-        <button className="button-buy"><Link to="/buyitem">Acheter</Link></button>
-    </div>
-    <div class="card">
-        <div class="card-image card-4"></div>
-        <h2 class="tit">Coffret pokemon celebration 25ans</h2>
-        <p class="pa">NYMPHALI</p>
-        <button className="button-buy"><Link to="/buyitem">Acheter</Link></button>
-    </div>
-    <div class="card">
-        <div class="card-image card-5"></div>
-        <h2 class="tit">Elite Trainer Box</h2>
-        <p class="pa">EVOLI</p>
-        <button className="button-buy"><Link to="/buyitem">Acheter</Link></button>
-
-    </div>
-        </section>
-
-      
-    </>
-)}
+    return (
+        <div className="products-bg">
+            <h1 className='products-title'>Pokéland</h1>
+            <div className="row">
+                {products.length ? JSON.parse(products).map(item => (
+                    item.stock > 0 ?
+                    <div className="col-lg-4 col-md-6">
+                        <Item item={item} key={item.id} />
+                    </div> : <></>
+                )) : <></>}
+            </div>
+        </div>
+    )
+}
 
 export default Products;

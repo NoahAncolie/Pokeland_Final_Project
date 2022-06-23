@@ -9,6 +9,7 @@ import Products from 'components/Items/products';
 import BuyItem from 'components/Items/BuyItem';
 import ForgotPassword from 'components/ForgotPassword';
 import Footer from 'components/Footer';
+import Product from 'components/Product';
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
                     <Route path="/register" element={<RegisterForm />} />
                     <Route path="/connect" element={<LoginForm />} />
                     <Route path="/forgotpassword" element={<ForgotPassword />} />
+                    <Route path="/product/:productId" element={<Product />} />
                 </Routes>
             </Router>
             <Footer />
