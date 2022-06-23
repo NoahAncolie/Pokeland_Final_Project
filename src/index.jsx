@@ -5,18 +5,20 @@ import Home from 'pages/Home/Home';
 import RegisterForm from 'pages/RegisterForm';
 import LoginForm from 'pages/LoginForm';
 import Navbar from 'components/Navbar';
+import Footer from 'components/Footer';
 
 const App = () => {
     return (
         <>
-        <Router>
-            <Navbar />
-         <Routes>
-          <Route path="/" element={<Home />} />   
-          <Route path="/register" element={<RegisterForm />} />
-          <Route path="/connect" element={<LoginForm />} />
-         </Routes>    
-        </Router>    
+            <Router>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/register" element={<RegisterForm />} />
+                    <Route path="/connect" element={<LoginForm />} />
+                </Routes>
+            </Router>
+            <Footer />
         </>
     )
 }

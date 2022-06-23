@@ -1,0 +1,7 @@
+.footer {
+    position: relative;
+    bottom: 0;
+    background: linear-gradient(to top, var(--blue), var(--transparent-dark-blue) 100%);
+    color: var(--grey);
+    box-shadow: 0 -5px 30px var(--dark-blue);
+}
