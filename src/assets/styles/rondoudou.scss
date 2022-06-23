@@ -20,19 +20,20 @@
 }
 
 .websiteInfos {
-    position: fixed;
-    top: 30vh;
+    position: absolute;
+    top: 25vh;
     z-index: 85;
-    left: 15px;
-    width: 100vw;
+    width: calc(100vw - 15px);
     color: #DFDFDF;
     padding: 15px;
     animation: 1s slideIn ease-in-out;
 }
 
 .webInfosVisible {
-    background-color : #0075be69 ;
+    font-family: 'Courier New', Courier, monospace !important;
+    background-color :#0a285fb3 ;
     border-radius: 5px;
+    margin: 0 15px;
 }
 
 .catcher {
@@ -63,4 +64,8 @@
 
 @keyframes slideIn {
     0% {transform: translateY(-100%);}
+}
+
+yellow {
+    color: var(--yellow);
 }

@@ -75,24 +75,24 @@ const LoginForm = () => {
               />
             </div>
 
-            <div className="">
-              <input
-                type="password"
-                placeholder="Password"
-                name="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="form__input"
-              />
-            </div>
-
-
-            <input className="btn" type="submit" value="Se connecter" />
-          </form>
-          <Link to="/register" className="change-form">S'enregistrer</Link>
-        </div>
+          <div className="form__group forgot-password">
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="form__input"
+            />
+          </div>
+         <input className="btn" type="submit" value="Se connecter" /><br></br>
+         <Link to="/forgotpassword" id="forgot-pwd">Mot de passe oublié ?</Link>
+         &nbsp;&nbsp;&nbsp;&nbsp;
+         <Link to="/register" className="change-form">S'inscrire</Link><br/><br/>
+        </form>
       </div>
+    </div>
     </div>
   )
 }
