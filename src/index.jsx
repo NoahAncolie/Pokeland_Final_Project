@@ -8,23 +8,26 @@ import Navbar from 'components/Navbar';
 import Products from 'components/Items/products';
 import BuyItem from 'components/Items/BuyItem';
 import Profile from 'components/Profile';
+import ForgotPassword from 'components/ForgotPassword';
+import Footer from 'components/Footer';
 
 const App = () => {
 
     return (
-        <>
-        <Router>
-            <Navbar />
-            
-         <Routes>
-          <Route path="/" element={<Home />} />   
-          <Route path="/register" element={<RegisterForm />} />
-          <Route path="/connect" element={<LoginForm />} />
-          <Route path="/items" element={<Products />} />
-          <Route path="/buyitem" element={<BuyItem />} />
-          <Route path="/profile" element={<Profile />} />
-         </Routes>    
-        </Router>    
+        <> 
+            <Router>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                     <Route path="/items" element={<Products />} />
+                    <Route path="/buyitem" element={<BuyItem />} />
+                    <Route path="/register" element={<RegisterForm />} />
+                    <Route path="/connect" element={<LoginForm />} />
+                    <Route path="/forgotpassword" element={<ForgotPassword />} />
+                    <Route path="/profile" element={<Profile/>} />
+                </Routes>
+            </Router>
+            <Footer />
         </>
     )
 }
