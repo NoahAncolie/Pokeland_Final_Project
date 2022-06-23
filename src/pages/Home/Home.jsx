@@ -12,6 +12,7 @@ const Home = () => {
         <div className='homepage'>
             <h1 className='home-title'><span className="poke-letter grow">Pokéland</span></h1>
             <div className="websiteInfos row">
+                <div className="col-lg-8"></div>
                 <div className="col-lg-3 webInfosVisible">
                     <p>Sur ce site, vous pourrez...</p>
                     <ul className='webInfo-list'>
