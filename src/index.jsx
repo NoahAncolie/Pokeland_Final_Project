@@ -7,6 +7,7 @@ import LoginForm from 'pages/LoginForm';
 import Navbar from 'components/Navbar';
 import Products from 'components/Items/products';
 import BuyItem from 'components/Items/BuyItem';
+import Profile from 'components/Profile';
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/connect" element={<LoginForm />} />
           <Route path="/items" element={<Products />} />
           <Route path="/buyitem" element={<BuyItem />} />
+          <Route path="/profile" element={<Profile />} />
          </Routes>    
         </Router>    
         </>
