@@ -33,9 +33,7 @@
     animation: arrive 500ms ease-in-out 0.9s forwards;
 }
 
-.form__group {
-    border-bottom: solid 1px black;
-}
+
 
 .form__input {
     display: block;
@@ -52,6 +50,7 @@
 .form__input:focus {
     outline: 4px solid var(--blue);
 }
+
 
 .btn {
     display: block;
@@ -90,12 +89,24 @@
     color: var(--grey);
     transition: 0.2s;
     font-size: x-large;
+    margin-bottom: 10px;
 }
+
+#forgot-pwd {
+    text-decoration: none;
+    font-size:23px;
+    color: #fff;
+    padding:5px;
+    border: solid 1px #fff;
+    border-radius: 6px;
+}
+
 
 .change-form:hover, .change-form:active {
     text-decoration:double;
     color: var(--blue);
 }
+
 
 @keyframes NO {
   from, to {

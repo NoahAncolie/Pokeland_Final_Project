@@ -5,6 +5,7 @@ import Home from 'pages/Home/Home';
 import RegisterForm from 'pages/RegisterForm';
 import LoginForm from 'pages/LoginForm';
 import Navbar from 'components/Navbar';
+import ForgotPassword from 'components/ForgotPassword';
 
 const App = () => {
     return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Home />} />   
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/connect" element={<LoginForm />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
          </Routes>    
         </Router>    
         </>
