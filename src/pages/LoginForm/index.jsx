@@ -86,8 +86,10 @@ const LoginForm = () => {
               className="form__input"
             />
           </div>
-         <input className="btn" type="submit" value="Se connecter" />
+         <input className="btn" type="submit" value="Se connecter" /><br></br>
          <Link to="/forgotpassword" id="forgot-pwd">Mot de passe oublié ?</Link>
+         &nbsp;&nbsp;&nbsp;&nbsp;
+         <Link to="/register" className="change-form">S'inscrire</Link><br/><br/>
         </form>
       </div>
     </div>

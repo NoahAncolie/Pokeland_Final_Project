@@ -11,7 +11,7 @@
 }
 
 * {
-    scrollbar-color: #0075BE #00000000;
+    scrollbar-color: #0075BE var(--transparent-dark-blue);
 }
 
 p, a {
@@ -85,7 +85,7 @@ body, html {
     background-position: 0% 100%;
     background-size: 0 100%;
     background-repeat:no-repeat;
-    padding: 2vh 5vw;
+    padding: 5vh 5vw;
 }
 
 .nav a:hover, .nav a:active {

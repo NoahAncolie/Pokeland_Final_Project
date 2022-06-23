@@ -56,7 +56,7 @@ const RegisterForm = () => {
         <div className="col-lg-4 form">
           <header className="user__header">
             <h2 className="user__title">
-              Rempli le formulaire ci-dessous pour t'inscrire. 🙂
+              Inscrit toi ici. 👇
             </h2>
           </header>
 
