@@ -7,7 +7,8 @@ import { useEffect, useState } from 'react'
 
 const CartComponent = () => {
 
-    const cartElements = JSON.parse(useAtomValue(Cart))
+    const elements = useAtomValue(Cart)
+    const cartElements = JSON.parse(elements)
     const [total, setTotal] = useState(0)
 
     const toggleCaddie = () => {

@@ -8,7 +8,7 @@
     width: 100%;
     text-align: center;
     font-size: 90px;
-    font-family: "Pokemon Solid";
+    font-family: "Pokemon";
     color: var(--yellow);
     -webkit-text-stroke: 5px var(--blue);
     text-shadow: -8px 8px #0A285F;
@@ -31,6 +31,7 @@
 
 .webInfosVisible {
     font-family: 'Courier New', Courier, monospace !important;
+    padding: 10px 0;
     background-color :#0a285fb3 ;
     border-radius: 5px;
     margin: 0 15px;

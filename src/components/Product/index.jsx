@@ -1,14 +1,28 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
+import { Cart } from "store/atoms"
+import { useAtom } from "jotai"
+import Cookies from "js-cookie"
 
 const Product = () => {
 
     const [product, setProduct] = useState("")
+    const [cart, setCart] = useAtom(Cart)
     const params = useParams()
 
     const loadProduct = (datas) => {
         setProduct(datas)
         console.log(datas)
+    }
+
+    const addToCart = () => {
+        let current_cart = JSON.parse(cart)
+        current_cart.push(product)
+        setCart(JSON.stringify(current_cart))
+        Cookies.set('cart', JSON.stringify(current_cart), {
+            sameSite: "none",
+            secure: true
+        })
     }
 
     useEffect(() => {
@@ -39,7 +53,7 @@ const Product = () => {
                             <button className="card-link timesNew">Acheter</button>
                         </div>
                         <div className="col-lg-6 col-md-6">
-                            <button className="card-link timesNew">Panier</button>
+                            <button className="card-link timesNew" onClick={addToCart}>Panier</button>
                         </div>
                     </div>
                 </div>

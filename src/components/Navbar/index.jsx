@@ -32,9 +32,7 @@ const Navbar = () => {
              "Authorization": Cookies.get('token'),
              "Content-Type": "application/json"
          }
-         }).then((response) => {
-            console.log(response)
-        })
+         })
          Cookies.remove('token', {
              sameSite: "none",
              secure: true
@@ -49,14 +47,14 @@ const Navbar = () => {
             })
             setToken("");
             setUser("");
-            setCart("")
+            setCart(JSON.stringify([]))
     }
 
     return (
         <>
             <img src={ball} alt="pokeball" className="pokeball-toggler" id="ball" />
             <div className="row">
-                <div className={`navbar nav col-lg-4 col-md-4 closed-navbar`} id="navbar">
+                <div className={`navbar nav col-lg-4 col-md-8 closed-navbar`} id="navbar">
                     <ul>
                         <li><h1 className='nav-title'>Pokéland</h1></li>
                         <li><Link to="/" onClick={ToggleNav}>
