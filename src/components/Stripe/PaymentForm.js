@@ -32,9 +32,7 @@ export default function PaymentForm() {
         const {error , paymentMethod } = await stripe.createPaymentMethod({
             type: "card",
             card: elements.getElement(CardElement),
-
         })
-   
 
         if (!error) {
             try{
@@ -43,7 +41,6 @@ export default function PaymentForm() {
                     amount: 1000,
                     id
                 })
-
                 if(response.data.success) {
                     console.log("Paiement réussi 👍")
                     setSuccess(true)
