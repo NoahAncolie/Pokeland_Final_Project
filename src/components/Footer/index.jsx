@@ -6,10 +6,10 @@ const Footer = () => {
         <footer className="footer">
             <div className="row">
                 <div className="col-lg-4 col-sm-12">
-                    <p><poke>Pokéland</poke><span className='timesNew'> &nbsp;~ 2022 ~ &nbsp;<a href="https://www.thehackingproject.org" className="HackingLink" target="_blank" rel="noreferrer noopener"><i>The Hacking Project</i></a>.<br />
-                        <smaller>
+                    <p><span className='poke'>Pokéland</span><span className='timesNew'> &nbsp;~ 2022 ~ &nbsp;<a href="https://www.thehackingproject.org" className="HackingLink" target="_blank" rel="noreferrer noopener"><i>The Hacking Project</i></a>.<br />
+                        <span className='smaller'>
                             <i>Projet réalisé avec :</i>
-                        </smaller>
+                        </span>
                     </span>
                     </p>
                     <div className="row">
