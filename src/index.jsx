@@ -7,6 +7,7 @@ import LoginForm from 'pages/LoginForm';
 import Navbar from 'components/Navbar';
 import Products from 'components/Items/products';
 import BuyItem from 'components/Items/BuyItem';
+import Profile from 'components/Profile';
 import ForgotPassword from 'components/ForgotPassword';
 import Footer from 'components/Footer';
 import Product from 'components/Product';
@@ -30,6 +31,7 @@ const App = () => {
                     <Route path="/register" element={<RegisterForm />} />
                     <Route path="/connect" element={<LoginForm />} />
                     <Route path="/forgotpassword" element={<ForgotPassword />} />
+                    <Route path="/profile" element={<Profile/>} />
                     <Route path="/product/:productId" element={<Product />} />
                 </Routes>
             </Router>
