@@ -10,21 +10,29 @@ import BuyItem from 'components/Items/BuyItem';
 import Profile from 'components/Profile';
 import ForgotPassword from 'components/ForgotPassword';
 import Footer from 'components/Footer';
+import Product from 'components/Product';
+import CartComponent from 'components/Cart';
+import { useAtomValue } from 'jotai';
+import { userAtom } from 'store/atoms';
 
 const App = () => {
 
+    const user = useAtomValue(userAtom)
+
     return (
-        <> 
+        <>
             <Router>
                 <Navbar />
+                {user ? <CartComponent /> : <></>}
                 <Routes>
                     <Route path="/" element={<Home />} />
-                     <Route path="/items" element={<Products />} />
+                    <Route path="/items" element={<Products />} />
                     <Route path="/buyitem" element={<BuyItem />} />
                     <Route path="/register" element={<RegisterForm />} />
                     <Route path="/connect" element={<LoginForm />} />
                     <Route path="/forgotpassword" element={<ForgotPassword />} />
                     <Route path="/profile" element={<Profile/>} />
+                    <Route path="/product/:productId" element={<Product />} />
                 </Routes>
             </Router>
             <Footer />
