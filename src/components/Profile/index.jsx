@@ -5,49 +5,19 @@ import "../../assets/styles/profile.scss";
 
 
 const Profile = () => {
-    const user = useAtomValue(userAtom);
+    const user = JSON.parse(useAtomValue(userAtom));
     console.log(user)
  
     
     return(
-
-        <>
-       
-<div class="container mt-5">
-    
-    <div class="row d-flex justify-content-center">
-        
-        <div class="col-md-7">
-            
-            <div class="card p-3 py-4">
-                
-                <div class="text-center">
-                    <img src="https://i.imgur.com/bDLhJiP.jpg" width="100" class="rounded-circle"/>
+        <div className="form-background">
+            <div className="row">
+                <div className="col-lg-4 col-md-4 col-sm-0"></div>
+                <div className="col-lg-4">
+                    
                 </div>
-                
-                <div class="text-center mt-3">
-                    <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
-                    <h3 class="mt-2 mb-0"> Paolucci Loic </h3>
-                    <h4>Email: </h4>
-                    <h4>Adress: </h4>
-                    <h4>Telephone: </h4>
-                </div>
-
-                <div class="buttons">  
-                <button class="btn btn-outline-primary px-4">Message</button>
-                <button class="btn btn-primary px-4 ms-3">Contact</button>
-                </div>
-
             </div>
-            
         </div>
-        
-    </div>
-    
-</div>
-        
-        </>
-
     )
 }
 

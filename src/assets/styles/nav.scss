@@ -47,6 +47,11 @@ body, html {
     animation: comeToScreen 1s;
 }
 
+.pokeball-toggler:hover {
+    width: 80px;
+    height: 80px;
+}
+
 .pokeball-animation {
     transition: 1s ease-in-out;
     transform: rotate(360deg);
