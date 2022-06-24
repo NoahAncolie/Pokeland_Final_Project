@@ -41,6 +41,7 @@ const LoginForm = () => {
           return (response.json())
         }).then((response) => {
             console.log(response);
+          response.user.password = "**Crypted**"
           setUser(response.user);
           Cookies.set('user', JSON.stringify(response.user), {
             sameSite: "none",
