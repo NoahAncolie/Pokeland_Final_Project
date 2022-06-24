@@ -1,6 +1,15 @@
 import { Link } from "react-router-dom"
+import { Cart } from "store/atoms"
+import { useSetAtom } from "jotai"
 
 const Item = ({ item }) => {
+
+    const setCart = useSetAtom(Cart)
+
+    const addToCart = () => {
+        setCart(item)
+    }
+
     return (
         <div className="item-card">
             <div className="row">
@@ -18,7 +27,7 @@ const Item = ({ item }) => {
                     <Link to={`/product/${item.id}`} className="card-link timesNew">Voir</Link>
                 </div>
                 <div className="col">
-                    <Link to="/acheter" className="card-link timesNew">Panier</Link>
+                    <button className="card-link timesNew" onClick={addToCart}>Panier</button>
                 </div>
             </div>
         </div>
