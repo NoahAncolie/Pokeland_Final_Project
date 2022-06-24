@@ -7,7 +7,6 @@ import "../../assets/styles/profile.scss";
 const Profile = () => {
     const user = useAtomValue(userAtom);
     console.log(user)
- 
     
     return(
 
@@ -27,17 +26,12 @@ const Profile = () => {
                 
                 <div class="text-center mt-3">
                     <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
-                    <h3 class="mt-2 mb-0"> Paolucci Loic </h3>
-                    <h4>Email: </h4>
-                    <h4>Adress: </h4>
-                    <h4>Telephone: </h4>
+                    <h3 class="mt-2 mb-0">  {user} </h3>
+                    <h3> {user.first_name}</h3>
+                    <h4>Email: {user.email} </h4>
+                   
                 </div>
-
-                <div class="buttons">  
-                <button class="btn btn-outline-primary px-4">Message</button>
-                <button class="btn btn-primary px-4 ms-3">Contact</button>
-                </div>
-
+                
             </div>
             
         </div>
