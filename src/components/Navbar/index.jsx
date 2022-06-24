@@ -4,13 +4,14 @@ import "../../assets/styles/nav.scss";
 import ball from "../../assets/images/pokeball.png";
 import Cookies from "js-cookie";
 import { useSetAtom, useAtomValue } from "jotai";
-import { userAtom, JWT } from "store/atoms";
+import { userAtom, JWT, Cart } from "store/atoms";
 
 
 const Navbar = () => {
 
     const setToken = useSetAtom(JWT);
     const setUser = useSetAtom(userAtom);
+    const setCart = useSetAtom(Cart)
     const jwt = useAtomValue(JWT);
 
     const ToggleNav = () => {
@@ -42,8 +43,13 @@ const Navbar = () => {
             sameSite: "none",
             secure: true
             })
+            Cookies.remove('cart', {
+                sameSite: "none",
+                secure: true
+            })
             setToken("");
-            setUser(""); 
+            setUser("");
+            setCart("")
     }
 
     return (

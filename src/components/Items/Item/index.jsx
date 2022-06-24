@@ -1,13 +1,21 @@
 import { Link } from "react-router-dom"
 import { Cart } from "store/atoms"
-import { useSetAtom } from "jotai"
+import { useAtom } from "jotai"
+import Cookies from "js-cookie"
+
 
 const Item = ({ item }) => {
 
-    const setCart = useSetAtom(Cart)
+    const [cart, setCart] = useAtom(Cart)
 
     const addToCart = () => {
-        setCart(item)
+        let current_cart = JSON.parse(cart)
+        current_cart.push(item)
+        setCart(JSON.stringify(current_cart))
+        Cookies.set('cart', JSON.stringify(current_cart), {
+            sameSite: "none",
+            secure: true
+        })
     }
 
     return (
