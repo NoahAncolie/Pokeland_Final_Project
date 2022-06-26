@@ -12,43 +12,44 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-    const setToken = useSetAtom(JWT);
-    const setUser = useSetAtom(userAtom);
-    const navigate = useNavigate();
+  const setToken = useSetAtom(JWT);
+  const setUser = useSetAtom(userAtom);
+  const navigate = useNavigate();
 
 
   function fetchData(e) {
 
-        e.preventDefault();
-        fetch("https://pokeland-api.herokuapp.com/users/sign_in", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                user: {
-                    email: email,
-                    password: password,
-                },
-            }),
-        }).then((response) => {
-          console.log(response);
-          setToken(response.headers.get("Authorization"));
-          Cookies.set('token', response.headers.get("Authorization"),{
-            sameSite: "none",
-            secure: true
-          })  
-          return (response.json())
-        }).then((response) => {
-            console.log(response);
-          setUser(response.user);
-          Cookies.set('user', JSON.stringify(response.user), {
-            sameSite: "none",
-            secure: true
-          }) 
-        })
-          navigate('/')
-      }
+    e.preventDefault();
+    fetch("https://pokeland-api.herokuapp.com/users/sign_in", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        user: {
+          email: email,
+          password: password,
+        },
+      }),
+    }).then((response) => {
+      setToken(response.headers.get("Authorization"));
+      Cookies.set('token', response.headers.get("Authorization"), {
+        sameSite: "none",
+        secure: true
+      })
+      return (response.json())
+    }).then((response) => {
+      response.user.password = "**Crypted**"
+      setUser(response.user);
+      Cookies.set('user', JSON.stringify(response.user), {
+        sameSite: "none",
+        secure: true
+      })
+    })
+    setTimeout(function () {
+      navigate('/')
+    }, 500);
+  }
 
 
   return (
@@ -75,24 +76,24 @@ const LoginForm = () => {
               />
             </div>
 
-          <div className="form__group forgot-password">
-            <input
-              type="password"
-              placeholder="Password"
-              name="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="form__input"
-            />
-          </div>
-         <input className="btn" type="submit" value="Se connecter" /><br></br>
-         <Link to="/forgotpassword" id="forgot-pwd">Mot de passe oublié ?</Link>
-         &nbsp;&nbsp;&nbsp;&nbsp;
-         <Link to="/register" className="change-form">S'inscrire</Link><br/><br/>
-        </form>
+            <div className="form__group forgot-password">
+              <input
+                type="password"
+                placeholder="Password"
+                name="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="form__input"
+              />
+            </div>
+            <input className="btn" type="submit" value="Se connecter" /><br></br>
+            <Link to="/forgotpassword" id="forgot-pwd">Mot de passe oublié ?</Link>
+            <br /><br />
+            <Link to="/register" className="change-form">S'inscrire</Link><br /><br />
+          </form>
+        </div>
       </div>
-    </div>
     </div>
   )
 }

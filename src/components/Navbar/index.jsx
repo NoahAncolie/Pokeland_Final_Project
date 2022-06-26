@@ -4,13 +4,14 @@ import "../../assets/styles/nav.scss";
 import ball from "../../assets/images/pokeball.png";
 import Cookies from "js-cookie";
 import { useSetAtom, useAtomValue } from "jotai";
-import { userAtom, JWT } from "store/atoms";
+import { userAtom, JWT, Cart } from "store/atoms";
 
 
 const Navbar = () => {
 
     const setToken = useSetAtom(JWT);
     const setUser = useSetAtom(userAtom);
+    const setCart = useSetAtom(Cart)
     const jwt = useAtomValue(JWT);
 
     const ToggleNav = () => {
@@ -31,9 +32,7 @@ const Navbar = () => {
              "Authorization": Cookies.get('token'),
              "Content-Type": "application/json"
          }
-         }).then((response) => {
-            console.log(response)
-        })
+         })
          Cookies.remove('token', {
              sameSite: "none",
              secure: true
@@ -42,15 +41,20 @@ const Navbar = () => {
             sameSite: "none",
             secure: true
             })
+            Cookies.remove('cart', {
+                sameSite: "none",
+                secure: true
+            })
             setToken("");
-            setUser(""); 
+            setUser("");
+            setCart(JSON.stringify([]))
     }
 
     return (
         <>
             <img src={ball} alt="pokeball" className="pokeball-toggler" id="ball" />
             <div className="row">
-                <div className={`navbar nav col-lg-4 col-md-4 closed-navbar`} id="navbar">
+                <div className={`navbar nav col-lg-4 col-md-8 closed-navbar`} id="navbar">
                     <ul>
                         <li><h1 className='nav-title'>Pokéland</h1></li>
                         <li><Link to="/" onClick={ToggleNav}>

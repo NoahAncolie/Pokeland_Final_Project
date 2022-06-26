@@ -1,6 +1,16 @@
 @import url('http://fonts.cdnfonts.com/css/pokemon-solid');
 @import url('http://fonts.cdnfonts.com/css/ttvtechprecomput-2');
 
+@font-face {
+    font-family: 'Pokemon';
+    src: url('../Fonts/Pokemon_Solid.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Gameboy';
+    src: url('../Fonts/Pokemon_GB.ttf') format('truetype');
+}
+
 :root {
     --light: #eaf4a9;
     --yellow: #FFCC00 ;
@@ -8,6 +18,7 @@
     --grey: rgb(236, 233, 233);
     --dark-blue: #0A285F;
     --transparent-dark-blue: #0a285f7c;
+    --red:  #f00000;
 }
 
 * {
@@ -15,13 +26,11 @@
 }
 
 p, a {
-    font-family: "TTVTechPrecomput";
-    font-size: xx-large;
+    font-family: "Gameboy";
 }
 
 li, .text-gameboy {
-    font-family: "TTVTechPrecomput";
-    font-size: x-large;
+    font-family: "Gameboy";
 }
 
 body, html {
@@ -32,6 +41,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    background-color: var(--grey);
 }
 
 .pokeball-toggler {
@@ -43,6 +53,11 @@ body, html {
     right: 50px;
     transition: 1s ease-in-out;
     animation: comeToScreen 1s;
+}
+
+.pokeball-toggler:hover {
+    width: 80px;
+    height: 80px;
 }
 
 .pokeball-animation {
@@ -60,6 +75,7 @@ body, html {
     transition: 0.8s ease-in-out;
     padding: 0;
     box-shadow: 0 5px 20px #0A285F;
+    overflow-y: auto;
 }
 
 .closed-navbar {
@@ -108,7 +124,7 @@ body, html {
     width: 100%;
     text-align: center;
     font-size: 50px;
-    font-family: "Pokemon Solid";
+    font-family: "Pokemon";
     color: var(--yellow);
     -webkit-text-stroke: 3px var(--blue);
     text-shadow: -6px 6px #0A285F;

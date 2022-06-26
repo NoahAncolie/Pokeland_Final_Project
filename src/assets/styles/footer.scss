@@ -1,5 +1,5 @@
 .footer {
-    padding-top: 5px;
+    padding: 10px;
     position: relative;
     bottom: 0;
     background: linear-gradient(to top, var(--blue), var(--dark-blue) 100%);
@@ -29,12 +29,12 @@
 
 .footer a:link, .footer a:visited {
     color: var(--grey);
-    transition: 0.5s ease-in-out;
+    transition: 0.4s ease-in-out;
     font-family: 'Times New Roman', Times, serif !important;
 }
 
 .footer a:hover, .footer a:active {
-    padding-left: 30px;
+    padding-left: 15px;
 }
 
 .svgLink:hover, .svgLink:active {
@@ -49,7 +49,7 @@
     padding-left: 10px !important;
 }
 
-smaller {
+.smaller {
     font-size: x-large;
 }
 
@@ -57,10 +57,10 @@ smaller {
     list-style: none !important;
 }
 
-poke {
+.poke {
     width: 100%;
     text-align: center;
-    font-family: "Pokemon Solid";
+    font-family: "Pokemon";
     font-size: xx-large !important;
     color: var(--yellow);
     -webkit-text-stroke: 2px var(--blue);
