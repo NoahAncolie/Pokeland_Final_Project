@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import { useSetAtom } from "jotai";
-import { userAtom, JWT } from "store/atoms";
+import { userAtom, JWT, isAdmin } from "store/atoms";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
@@ -14,6 +14,7 @@ const LoginForm = () => {
 
     const setToken = useSetAtom(JWT);
     const setUser = useSetAtom(userAtom);
+    const setAdmin = useSetAtom(isAdmin);
     const navigate = useNavigate();
 
 
@@ -40,13 +41,27 @@ const LoginForm = () => {
           })  
           return (response.json())
         }).then((response) => {
-            console.log(response);
+          console.log(response.user);
           response.user.password = "**Crypted**"
           setUser(response.user);
           Cookies.set('user', JSON.stringify(response.user), {
             sameSite: "none",
             secure: true
           }) 
+          console.log(Cookies.get('user'))
+          if(response.user.email === "admin@admin.com"){
+            setAdmin("true");
+            Cookies.set('isAdmin', "true", {
+              sameSite: "none",
+              secure: true
+            })
+          } else {
+            setAdmin("false");
+            Cookies.set('isAdmin', "false", {
+              sameSite: "none",
+              secure: true
+            })
+          }
         })
           navigate('/')
       }

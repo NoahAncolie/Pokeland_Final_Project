@@ -4,15 +4,21 @@ import "../../assets/styles/nav.scss";
 import ball from "../../assets/images/pokeball.png";
 import Cookies from "js-cookie";
 import { useSetAtom, useAtomValue } from "jotai";
-import { userAtom, JWT, Cart } from "store/atoms";
+import { userAtom, JWT, Cart, isAdmin } from "store/atoms";
 
 
 const Navbar = () => {
 
     const setToken = useSetAtom(JWT);
     const setUser = useSetAtom(userAtom);
-    const setCart = useSetAtom(Cart)
+    const setCart = useSetAtom(Cart);
+    const setAdmin = useSetAtom(isAdmin);
     const jwt = useAtomValue(JWT);
+    const user = useAtomValue(userAtom);
+    const admin = useAtomValue(isAdmin)
+    console.log(Cookies.get("isAdmin"));
+    console.log(jwt);
+    console.log(user);
 
     const ToggleNav = () => {
         document.getElementById('ball').classList.toggle('pokeball-animation')
@@ -25,11 +31,10 @@ const Navbar = () => {
     }, []);
 
     function logout() {
-        console.log(Cookies.get('token'));
         fetch("https://pokeland-api.herokuapp.com/users/sign_out", {
          method: "delete",
          headers: {
-             "Authorization": Cookies.get('token'),
+             "Authorization": jwt,
              "Content-Type": "application/json"
          }
          }).then((response) => {
@@ -47,9 +52,10 @@ const Navbar = () => {
                 sameSite: "none",
                 secure: true
             })
-            setToken("");
-            setUser("");
-            setCart("")
+            setToken([]);
+            setUser([]);
+            setCart([])
+            setAdmin("false");
     }
 
     return (
@@ -71,7 +77,20 @@ const Navbar = () => {
                             </svg>
                             &nbsp;&nbsp;Produits
                         </Link></li>
-                        {jwt === "" ?
+
+                        {admin === "true" ?
+                        <>
+                        <li><Link to="/createitem" onClick={ToggleNav}>
+                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                <path d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 96c48.6 0 88 39.4 88 88s-39.4 88-88 88-88-39.4-88-88 39.4-88 88-88zm0 344c-58.7 0-111.3-26.6-146.5-68.2 18.8-35.4 55.6-59.8 98.5-59.8 2.4 0 4.8.4 7.1 1.1 13 4.2 26.6 6.9 40.9 6.9 14.3 0 28-2.7 40.9-6.9 2.3-.7 4.7-1.1 7.1-1.1 42.9 0 79.7 24.4 98.5 59.8C359.3 421.4 306.7 448 248 448z" />
+                           </svg>
+                            &nbsp;&nbsp;Ajout produit
+                        </Link></li>
+                        </>
+                        : null
+                        }
+
+                        {jwt == "" ?
                         <>
                         <li><Link to="/connect" onClick={ToggleNav}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">

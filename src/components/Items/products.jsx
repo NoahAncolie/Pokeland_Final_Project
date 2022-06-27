@@ -17,8 +17,13 @@ const Products = () => {
                 "Content-Type": "application/json"
             }
         }
-        ).then((response) => { return response.json() })
-            .then((response) => loadProducts(response))
+        ).then((response) => { 
+            console.log(response)
+            return response.json() })
+            .then((response) => {
+            console.log(response);
+            loadProducts(response)
+    })
     }, [])
 
     return (

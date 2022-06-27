@@ -14,6 +14,8 @@ import Product from 'components/Product';
 import CartComponent from 'components/Cart';
 import { useAtomValue } from 'jotai';
 import { userAtom } from 'store/atoms';
+import CreateItem from 'pages/CreateItem';
+
 
 const App = () => {
 
@@ -23,7 +25,7 @@ const App = () => {
         <>
             <Router>
                 <Navbar />
-                {user ? <CartComponent /> : <></>}
+  
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/items" element={<Products />} />
@@ -33,6 +35,7 @@ const App = () => {
                     <Route path="/forgotpassword" element={<ForgotPassword />} />
                     <Route path="/profile" element={<Profile/>} />
                     <Route path="/product/:productId" element={<Product />} />
+                    <Route path="/createitem" element={<CreateItem />} />
                 </Routes>
             </Router>
             <Footer />
