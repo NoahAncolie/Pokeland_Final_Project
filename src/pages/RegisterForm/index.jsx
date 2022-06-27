@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 import { useSetAtom } from "jotai";
-import { userAtom, JWT } from "store/atoms";
+import { userAtom, JWT, isAdmin } from "store/atoms";
 import { Link } from "react-router-dom";
 import "../../assets/styles/forms.scss";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ const RegisterForm = () => {
 
   const setUser = useSetAtom(userAtom);
   const setToken = useSetAtom(JWT);
+  const setAdmin = useSetAtom(isAdmin);
   const navigate = useNavigate();
 
   function fetchData(e) {
@@ -42,6 +43,19 @@ const RegisterForm = () => {
         sameSite: "none",
         secure: true
       })
+      if(response.user.email === "admin@admin.com"){
+        setAdmin("true");
+        Cookies.set('isAdmin', "true", {
+          sameSite: "none",
+          secure: true
+        })
+      } else {
+        setAdmin("false");
+        Cookies.set('isAdmin', "false", {
+          sameSite: "none",
+          secure: true
+        })
+      }
     })
     setTimeout(function () {
       navigate('/')

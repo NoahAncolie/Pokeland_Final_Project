@@ -10,6 +10,7 @@
 }
 
 .user__header {
+   
     margin-bottom: 10vh;
     text-align: center;
     opacity: 0;
@@ -23,6 +24,10 @@
     color: var(--grey);
 }
 
+#createtitle {
+    padding: 40px;
+}
+
 .form {
     margin-top: 100px;
     border-radius: 6px;
@@ -31,6 +36,7 @@
     transform: translate3d(0, 500px, 0);
     animation: arrive 500ms ease-in-out 0.9s forwards;
 }
+
 
 
 
@@ -49,6 +55,7 @@
 .form__input:focus {
     outline: 4px solid var(--blue);
 }
+
 
 
 .btn {
@@ -111,6 +118,8 @@
     text-decoration:double;
     color: var(--blue);
 }
+
+
 
 
 @keyframes NO {
