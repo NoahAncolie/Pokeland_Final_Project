@@ -68,3 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### Wireframe FIGMA ###
+  URL : 'https://www.figma.com/file/ylejoTwDQUzBDcwksutFJu/Maquette-Pokeland?node-id=6%3A62'
