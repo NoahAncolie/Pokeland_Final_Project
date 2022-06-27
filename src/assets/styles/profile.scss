@@ -1,0 +1,58 @@
+.user-card {
+    width: 100%;
+    background-color: rgba(153, 205, 50, 0.623);
+    border-radius: 3px;
+    padding: 10px;
+    color: black;
+    box-shadow: inset 3px 3px 10px rgba(0, 0, 0, 0.441);
+    font-size: small;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.gb-body {
+    background-color: var(--grey);
+    border-radius: 10px 10px 60px 10px;
+    height: 80vh;
+    margin: 50px 45px;
+    box-shadow: 0 0 10px var(--dark-blue);
+    padding: 30px 15px 10px 15px;
+    min-height: fit-content;
+    overflow-y: auto;
+    max-height: 500px;
+}
+
+.screen-outer {
+    width: 100%;
+    background-color: gray;
+    padding: 15px 40px;
+    border-radius: 10px 10px 40px 10px;
+    border: 1px solid darkgray;
+}
+
+.brand {
+    color: var(--dark-blue);
+}
+
+.edit-input {
+    display: block;
+    width: 100%;
+    padding: 5px;
+    -webkit-appearance: none;
+    border: 0;
+    outline: 0;
+    transition: 0.2s;
+    margin: 5px 0;
+    border-radius: 2px;
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.441);
+}
+
+.edit-input:focus {
+    outline: 2px solid var(--blue);
+}
+
+.edit-btn {
+    padding: 10px !important;
+    font-size: small !important;
+    border-radius: 3px 3px 30px 3px !important;
+}
