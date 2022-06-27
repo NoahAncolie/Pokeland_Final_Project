@@ -16,12 +16,11 @@
     opacity: 0;
     transform: translate3d(0, 500px, 0);
     animation: arrive 500ms ease-in-out 0.7s forwards;
-    font-family: "TTVTechPrecomput";
+    font-family: "Gameboy";
 }
 
 .user__title {
     font-weight: 500;
-    font-size: 50px;
     color: var(--grey);
 }
 
@@ -74,9 +73,10 @@
     background-repeat:no-repeat;
 
     transition: 0.3s;
-    font-family: "TTVTechPrecomput";
-    font-size: xx-large;
+    font-family: "Gameboy";
+    font-size: x-large;
     border-radius: 2px;
+    margin-bottom: 5px;
 }
 
 .btn:hover {
@@ -95,17 +95,22 @@
     text-decoration: none;
     color: var(--grey);
     transition: 0.2s;
-    font-size: x-large;
+    font-size: medium;
+    padding: 5px;
     margin-bottom: 10px;
 }
 
 #forgot-pwd {
     text-decoration: none;
-    font-size:23px;
     color: #fff;
     padding:5px;
     border: solid 1px #fff;
     border-radius: 6px;
+    transition: 0.2s;
+}
+
+#forgot-pwd:hover {
+   border-color: var(--blue);
 }
 
 

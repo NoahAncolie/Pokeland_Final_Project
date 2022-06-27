@@ -10,7 +10,7 @@ const CartElement = ({ item, index }) => {
         let current_cart = JSON.parse(cart)
         current_cart.splice(index, 1)
         setCart(JSON.stringify(current_cart))
-        Cookies.set('user', JSON.stringify(current_cart), {
+        Cookies.set('cart', JSON.stringify(current_cart), {
             sameSite: "none",
             secure: true
         })

@@ -30,15 +30,13 @@ const RegisterForm = () => {
         },
       }),
     }).then((response) => {
-      console.log(response);
       setToken(response.headers.get("Authorization"));
       Cookies.set('token', response.headers.get("Authorization"), {
         sameSite: "none",
         secure: true
-      })  
+      })
       return response.json()
     }).then((response) => {
-      console.log(response);
       response.user.password = "**Crypted**"
       setUser(response.user);
       Cookies.set('user', JSON.stringify(response.user), {
@@ -59,8 +57,10 @@ const RegisterForm = () => {
         })
       }
     })
-    navigate('/connect')    
-};
+    setTimeout(function () {
+      navigate('/')
+    }, 500);
+  };
 
 
 
