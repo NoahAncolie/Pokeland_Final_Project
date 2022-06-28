@@ -48,7 +48,6 @@ const LoginForm = () => {
             sameSite: "none",
             secure: true
           }) 
-          console.log(Cookies.get('user'))
           if(response.user.email === "admin@admin.com"){
             setAdmin("true");
             Cookies.set('isAdmin', "true", {
