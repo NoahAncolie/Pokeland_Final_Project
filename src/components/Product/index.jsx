@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { Cart } from "store/atoms"
-import { useAtom } from "jotai"
+import { Cart, userAtom } from "store/atoms"
+import { useAtom, useAtomValue } from "jotai"
 import Cookies from "js-cookie"
 
 const Product = () => {
@@ -9,6 +9,7 @@ const Product = () => {
     const [product, setProduct] = useState("")
     const [cart, setCart] = useAtom(Cart)
     const params = useParams()
+    const user = useAtomValue(userAtom)
 
     const loadProduct = (datas) => {
         setProduct(datas)
@@ -25,6 +26,22 @@ const Product = () => {
         })
     }
 
+    const buyProduct = () => {
+        let userId = JSON.parse(user).id
+        fetch(`https://pokeland-api.herokuapp.com/orders`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                quantity: 1,
+                user_id: userId,
+                product_id: product.id
+            })
+        })
+        alert('Produit Acheté !')
+    }
+
     useEffect(() => {
         fetch(`https://pokeland-api.herokuapp.com/products/${params.productId}`, {
             method: "get",
@@ -38,6 +55,7 @@ const Product = () => {
 
     return (
         <div className="products-bg">
+            <h1 className="products-title">Produit.</h1>
             <div className="row">
                 <div className="col-lg-4 col-md-3 col-sm-0">
                 </div>
@@ -50,7 +68,7 @@ const Product = () => {
                     <p>Quantité : <span className="timesNew">{product.stock}</span></p>
                     <div className="row">
                         <div className="col-lg-6 col-md-6">
-                            <button className="card-link timesNew">Acheter</button>
+                            <button className="card-link timesNew" onClick={buyProduct}>Acheter</button>
                         </div>
                         <div className="col-lg-6 col-md-6">
                             <button className="card-link timesNew" onClick={addToCart}>Panier</button>

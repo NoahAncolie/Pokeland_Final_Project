@@ -63,7 +63,9 @@ const LoginForm = () => {
             })
           }
         })
+        setTimeout(function () {
           navigate('/')
+        }, 500);
       }
 
 
