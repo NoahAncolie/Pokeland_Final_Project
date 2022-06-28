@@ -25,7 +25,7 @@ const App = () => {
         <>
             <Router>
                 <Navbar />
-  
+                {user ? <CartComponent/> : <></>}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/items" element={<Products />} />

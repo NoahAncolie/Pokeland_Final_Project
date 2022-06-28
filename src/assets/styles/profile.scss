@@ -12,7 +12,7 @@
 
 .gb-body {
     background-color: var(--grey);
-    border-radius: 10px 10px 60px 10px;
+    border-radius: 10px;
     height: 80vh;
     margin: 50px 45px;
     box-shadow: 0 0 10px var(--dark-blue);
@@ -26,12 +26,13 @@
     width: 100%;
     background-color: gray;
     padding: 15px 40px;
-    border-radius: 10px 10px 40px 10px;
+    border-radius: 10px;
     border: 1px solid darkgray;
 }
 
 .brand {
     color: var(--dark-blue);
+    margin-bottom: 20px;
 }
 
 .edit-input {
@@ -42,7 +43,7 @@
     border: 0;
     outline: 0;
     transition: 0.2s;
-    margin: 5px 0;
+    margin: 10px 0;
     border-radius: 2px;
     box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.441);
 }
@@ -54,5 +55,5 @@
 .edit-btn {
     padding: 10px !important;
     font-size: small !important;
-    border-radius: 3px 3px 30px 3px !important;
+    border-radius: 3px !important;
 }
