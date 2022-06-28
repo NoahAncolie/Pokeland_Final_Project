@@ -12,21 +12,14 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-<<<<<<< HEAD
     const setToken = useSetAtom(JWT);
     const setUser = useSetAtom(userAtom);
     const setAdmin = useSetAtom(isAdmin);
     const navigate = useNavigate();
-=======
-  const setToken = useSetAtom(JWT);
-  const setUser = useSetAtom(userAtom);
-  const navigate = useNavigate();
->>>>>>> Development
 
 
   function fetchData(e) {
 
-<<<<<<< HEAD
         e.preventDefault();
         fetch("https://pokeland-api.herokuapp.com/users/sign_in", {
             method: "post",
@@ -72,39 +65,6 @@ const LoginForm = () => {
         })
           navigate('/')
       }
-=======
-    e.preventDefault();
-    fetch("https://pokeland-api.herokuapp.com/users/sign_in", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user: {
-          email: email,
-          password: password,
-        },
-      }),
-    }).then((response) => {
-      setToken(response.headers.get("Authorization"));
-      Cookies.set('token', response.headers.get("Authorization"), {
-        sameSite: "none",
-        secure: true
-      })
-      return (response.json())
-    }).then((response) => {
-      response.user.password = "**Crypted**"
-      setUser(response.user);
-      Cookies.set('user', JSON.stringify(response.user), {
-        sameSite: "none",
-        secure: true
-      })
-    })
-    setTimeout(function () {
-      navigate('/')
-    }, 500);
-  }
->>>>>>> Development
 
 
   return (
