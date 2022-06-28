@@ -1,6 +1,8 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
+import { useAtomValue } from 'jotai';
+import { userAtom } from 'store/atoms';
+import React from 'react';
 import Home from 'pages/Home/Home';
 import RegisterForm from 'pages/RegisterForm';
 import LoginForm from 'pages/LoginForm';
@@ -12,8 +14,6 @@ import ForgotPassword from 'components/ForgotPassword';
 import Footer from 'components/Footer';
 import Product from 'components/Product';
 import CartComponent from 'components/Cart';
-import { useAtomValue } from 'jotai';
-import { userAtom } from 'store/atoms';
 import CreateItem from 'pages/CreateItem';
 
 
@@ -25,7 +25,7 @@ const App = () => {
         <>
             <Router>
                 <Navbar />
-                {user ? <CartComponent/> : <></>}
+                {user.id ? <CartComponent/> : <></>}
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/items" element={<Products />} />
