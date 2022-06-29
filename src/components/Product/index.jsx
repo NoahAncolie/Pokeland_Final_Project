@@ -13,6 +13,7 @@ const Product = () => {
     const params = useParams()
     const user = useAtomValue(userAtom)
     const [checkout, setCheckout] = useState(false)
+    const alert = useAlert()
 
     const openCheckout = () => {
         setCheckout(true)
