@@ -4,6 +4,7 @@ import { useAtomValue } from 'jotai'
 import { Cart, userAtom } from 'store/atoms'
 import CartElement from './CartElement'
 import { useEffect, useState } from 'react'
+import PaypalComponent from '../PaypalComponent'
 
 const CartComponent = () => {
 
@@ -11,9 +12,18 @@ const CartComponent = () => {
     const cartElements = JSON.parse(elements)
     const user = useAtomValue(userAtom)
     const [total, setTotal] = useState(0)
+    const [checkout, setCheckout] = useState(false)
 
     const toggleCaddie = () => {
         document.getElementsByClassName('caddie')[0].classList.toggle('closed-caddie')
+    }
+
+    const openCheckout = () => {
+        setCheckout(true)
+    }
+
+    const closeCheckout = () => {
+        setCheckout(false)
     }
 
     const buyProducts = () => {
@@ -74,12 +84,13 @@ const CartComponent = () => {
                     <div className="col-lg-3 col-md-3 col-sm-0"></div>
                     <div className="col-lg-6">
                         {cartElements.map((item, index) => (
-                            <CartElement item={item} key={item.id} index={index} />
+                            <CartElement item={item} key={item.id} index={index} openCheckout={openCheckout} closeCheckout={closeCheckout} checkout={checkout}/>
                         ))}
-                        {total ? <button className="cart-btn timesNew" onClick={buyProducts}>Procéder au payment ({total}&euro;)</button> : <><p id="empty-cart"></p></>}
+                        {total ? <button className="cart-btn timesNew" onClick={openCheckout}>Procéder au payment ({total}&euro;)</button> : <><p id="empty-cart"></p></>}
                     </div>
                 </div>
             </div>
+            {checkout ? <PaypalComponent product_price={total} saveOrder={buyProducts} closeCheckout={closeCheckout} /> : <></>}
         </>
     )
 }

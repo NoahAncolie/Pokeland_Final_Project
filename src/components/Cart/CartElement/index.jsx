@@ -1,8 +1,9 @@
 import { useAtom, useAtomValue } from "jotai"
 import { Cart, userAtom } from "store/atoms"
 import Cookies from "js-cookie"
+import PaypalComponent from "components/PaypalComponent"
 
-const CartElement = ({ item, index }) => {
+const CartElement = ({ item, index, openCheckout, closeCheckout, checkout}) => {
 
     const [cart, setCart] = useAtom(Cart)
     const user = useAtomValue(userAtom)
@@ -18,7 +19,6 @@ const CartElement = ({ item, index }) => {
     }
 
     const buyProduct = () => {
-        let userId = JSON.parse(user).id
         fetch(`https://pokeland-api.herokuapp.com/orders`, {
             method: "post",
             headers: {
@@ -26,7 +26,7 @@ const CartElement = ({ item, index }) => {
             },
             body: JSON.stringify({
                 quantity: 1,
-                user_id: userId,
+                user_id: user.id,
                 product_id: item.id
             })
         })
@@ -38,12 +38,13 @@ const CartElement = ({ item, index }) => {
             <p>{item.name} <span className="timesNew">{item.price}&euro;</span></p>
             <div className="row">
                 <div className="col">
-                    <button className="card-link dark-link timesNew" onClick={() => {buyProduct(); removeItem()}}>Acheter</button>
+                    <button className="card-link dark-link timesNew" onClick={() => {openCheckout()}}>Acheter</button>
                 </div>
                 <div className="col">
                     <button className="card-link dark-link remove-link timesNew" onClick={removeItem}>Enlever du Panier</button>
                 </div>
             </div>
+            {checkout ? <PaypalComponent product_price={item.price} saveOrder={buyProduct} closeCheckout={closeCheckout} /> : <></>}
         </>
     )
 }
