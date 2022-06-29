@@ -32,6 +32,11 @@ const Navbar = () => {
         })
     }, []);
 
+    useEffect(() => {
+        if ( admin === "false"){
+        setAdmin("false")}
+    })
+
 
     function logout() {
         fetch("https://pokeland-api.herokuapp.com/users/sign_out", {
@@ -55,7 +60,7 @@ const Navbar = () => {
             })
             setToken("");
             setUser([]);
-            setCart(JSON.stringify([]))
+            setCart(JSON.stringify([]));
             setAdmin("false");
             alert.success("A bientôt ! 👋");
     }
