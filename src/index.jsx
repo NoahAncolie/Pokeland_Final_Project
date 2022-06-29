@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import { useAtomValue } from 'jotai';
 import { userAtom } from 'store/atoms';
+import { transitions, positions, Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
 import React from 'react';
 import Home from 'pages/Home/Home';
 import RegisterForm from 'pages/RegisterForm';
@@ -21,9 +23,17 @@ const App = () => {
 
     const user = useAtomValue(userAtom)
 
+const options = {
+    position: positions.TOP_LEFT,
+    timeout: 5000,
+    offset: '30px',
+    transition: transitions.SCALE
+  }
+
     return (
         <>
             <Router>
+                <AlertProvider template={AlertTemplate} {...options}>
                 <Navbar />
                 {user.id ? <CartComponent/> : <></>}
                 <Routes>
@@ -37,6 +47,7 @@ const App = () => {
                     <Route path="/product/:productId" element={<Product />} />
                     <Route path="/createitem" element={<CreateItem />} />
                 </Routes>
+                </AlertProvider>
             </Router>
             <Footer />
         </>
