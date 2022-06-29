@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { Cart, userAtom } from "store/atoms"
 import { useAtom, useAtomValue } from "jotai"
 import Cookies from "js-cookie"
+import PaypalComponent from "components/PaypalComponent"
 
 const Product = () => {
 
@@ -10,6 +11,15 @@ const Product = () => {
     const [cart, setCart] = useAtom(Cart)
     const params = useParams()
     const user = useAtomValue(userAtom)
+    const [checkout, setCheckout] = useState(false)
+
+    const openCheckout = () => {
+        setCheckout(true)
+    }
+
+    const closeCheckout = () => {
+        setCheckout(false)
+    }
 
     const loadProduct = (datas) => {
         setProduct(datas)
@@ -27,7 +37,6 @@ const Product = () => {
     }
 
     const buyProduct = () => {
-        let userId = JSON.parse(user).id
         fetch(`https://pokeland-api.herokuapp.com/orders`, {
             method: "post",
             headers: {
@@ -35,7 +44,7 @@ const Product = () => {
             },
             body: JSON.stringify({
                 quantity: 1,
-                user_id: userId,
+                user_id: user.id,
                 product_id: product.id
             })
         })
@@ -68,7 +77,7 @@ const Product = () => {
                     <p>Quantité : <span className="timesNew">{product.stock}</span></p>
                     <div className="row">
                         <div className="col-lg-6 col-md-6">
-                            <button className="card-link timesNew" onClick={buyProduct}>Acheter</button>
+                            <button className="card-link timesNew" onClick={openCheckout}>Acheter</button>
                         </div>
                         <div className="col-lg-6 col-md-6">
                             <button className="card-link timesNew" onClick={addToCart}>Panier</button>
@@ -76,6 +85,7 @@ const Product = () => {
                     </div>
                 </div>
             </div>
+            {checkout ? <PaypalComponent product_price={product.price} saveOrder={buyProduct} closeCheckout={closeCheckout} /> : <></>}
         </div>
     )
 }

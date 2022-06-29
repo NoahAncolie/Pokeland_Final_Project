@@ -1,0 +1,36 @@
+.checkout-div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    padding: 30px;
+    padding-top: 0;
+    // width: 30vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: rgba( 255, 255, 255, 0.55 ) !important;
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 10px ) !important;
+    -webkit-backdrop-filter: blur( 10px ) !important;
+    border-radius: 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 ) !important;
+    text-align: right;
+    justify-content: right;
+}
+
+.close-btn {
+    right: 0;
+    top: 0;
+    margin: 10px;
+    margin-right: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(211, 211, 211, 0.759);
+    font-weight: 400;
+}
+
+.close-btn:hover {
+    background-color: lightgray; 
+}
