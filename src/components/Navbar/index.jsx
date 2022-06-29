@@ -5,6 +5,7 @@ import ball from "../../assets/images/pokeball.png";
 import Cookies from "js-cookie";
 import { useSetAtom, useAtomValue } from "jotai";
 import { userAtom, JWT, Cart, isAdmin } from "store/atoms";
+import { useAlert } from "react-alert";
 
 
 const Navbar = () => {
@@ -15,7 +16,8 @@ const Navbar = () => {
     const setAdmin = useSetAtom(isAdmin);
     const jwt = useAtomValue(JWT);
     const user = useAtomValue(userAtom);
-    const admin = useAtomValue(isAdmin)
+    const admin = useAtomValue(isAdmin);
+    const alert = useAlert();
     console.log(Cookies.get("isAdmin"));
     console.log(jwt);
     console.log(user);
@@ -29,6 +31,7 @@ const Navbar = () => {
             ToggleNav()
         })
     }, []);
+
 
     function logout() {
         fetch("https://pokeland-api.herokuapp.com/users/sign_out", {
@@ -50,10 +53,11 @@ const Navbar = () => {
                 sameSite: "none",
                 secure: true
             })
-            setToken([]);
+            setToken("");
             setUser([]);
-            setAdmin("false");
             setCart(JSON.stringify([]))
+            setAdmin("false");
+            alert.success("A bientôt ! 👋");
     }
 
     return (
@@ -88,7 +92,7 @@ const Navbar = () => {
                         : null
                         }
 
-                        {jwt === "" ?
+                        {jwt === ""  ?
                         <>
                         <li><Link to="/connect" onClick={ToggleNav}>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">

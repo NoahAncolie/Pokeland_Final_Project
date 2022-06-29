@@ -5,7 +5,7 @@ import { useSetAtom } from "jotai";
 import { userAtom, JWT, isAdmin } from "store/atoms";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import { useAlert } from "react-alert";
 
 const LoginForm = () => {
 
@@ -16,7 +16,7 @@ const LoginForm = () => {
     const setUser = useSetAtom(userAtom);
     const setAdmin = useSetAtom(isAdmin);
     const navigate = useNavigate();
-
+    const alert = useAlert();
 
   function fetchData(e) {
 
@@ -65,6 +65,7 @@ const LoginForm = () => {
         setTimeout(function () {
           navigate('/')
         }, 500);
+        alert.success("Connexion réussie 🌎");
       }
 
 

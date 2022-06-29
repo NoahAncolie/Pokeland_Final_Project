@@ -5,6 +5,7 @@ import { userAtom, JWT, isAdmin } from "store/atoms";
 import { Link } from "react-router-dom";
 import "../../assets/styles/forms.scss";
 import { useNavigate } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 const RegisterForm = () => {
   const [email, setEmail] = useState("");
@@ -15,6 +16,7 @@ const RegisterForm = () => {
   const setToken = useSetAtom(JWT);
   const setAdmin = useSetAtom(isAdmin);
   const navigate = useNavigate();
+  const alert = useAlert();
 
   function fetchData(e) {
     e.preventDefault();
@@ -60,6 +62,7 @@ const RegisterForm = () => {
     setTimeout(function () {
       navigate('/')
     }, 500);
+    alert.success("Inscription réussie 🤓");
   };
 
 
