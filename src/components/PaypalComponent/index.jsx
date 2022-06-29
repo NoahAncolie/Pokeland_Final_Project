@@ -16,7 +16,7 @@ const PaypalComponent = ({ product_price, saveOrder, closeCheckout }) => {
                         {
                             description: "Basket Content",
                             amount: {
-                                currency_code: "EUR",
+                                currency_code: "GBP",
                                 value: product_price
                             }
                         }
