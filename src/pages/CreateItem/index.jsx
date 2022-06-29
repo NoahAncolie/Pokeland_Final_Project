@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useAtomValue } from "jotai";
 import { userAtom, JWT } from "store/atoms";
 
