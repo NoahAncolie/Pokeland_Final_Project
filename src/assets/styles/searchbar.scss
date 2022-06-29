@@ -1,0 +1,17 @@
+.searchCtn {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.searchBar {
+    font-family: "Gameboy";
+    border-radius: 15px;
+    border-color: var(--transparent-dark-blue);
+    color: black;
+    font-size: small;
+    width: 300px;
+    padding: 10px;
+    text-align: center;
+}
+
