@@ -4,6 +4,7 @@ import { Cart, userAtom } from "store/atoms"
 import { useAtom, useAtomValue } from "jotai"
 import Cookies from "js-cookie"
 import PaypalComponent from "components/PaypalComponent"
+import { useAlert } from "react-alert"
 
 const Product = () => {
 
@@ -12,6 +13,7 @@ const Product = () => {
     const params = useParams()
     const user = useAtomValue(userAtom)
     const [checkout, setCheckout] = useState(false)
+    const alert = useAlert()
 
     const openCheckout = () => {
         setCheckout(true)
@@ -34,6 +36,7 @@ const Product = () => {
             sameSite: "none",
             secure: true
         })
+        alert.success(`${product.name} ajouté au Panier ! 🧺`)
     }
 
     const buyProduct = () => {
@@ -48,7 +51,6 @@ const Product = () => {
                 product_id: product.id
             })
         })
-        alert('Produit Acheté !')
     }
 
     useEffect(() => {
