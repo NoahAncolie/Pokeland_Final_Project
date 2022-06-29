@@ -84,7 +84,7 @@ const CartComponent = () => {
                     <div className="col-lg-3 col-md-3 col-sm-0"></div>
                     <div className="col-lg-6">
                         {cartElements.map((item, index) => (
-                            <CartElement item={item} key={item.id} index={index} openCheckout={openCheckout} closeCheckout={closeCheckout} checkout={checkout}/>
+                            <CartElement item={item} key={item.id} index={index} />
                         ))}
                         {total ? <button className="cart-btn timesNew" onClick={openCheckout}>Procéder au payment ({total}&euro;)</button> : <><p id="empty-cart"></p></>}
                     </div>

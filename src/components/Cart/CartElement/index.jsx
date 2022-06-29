@@ -2,11 +2,21 @@ import { useAtom, useAtomValue } from "jotai"
 import { Cart, userAtom } from "store/atoms"
 import Cookies from "js-cookie"
 import PaypalComponent from "components/PaypalComponent"
+import { useState } from "react"
 
-const CartElement = ({ item, index, openCheckout, closeCheckout, checkout}) => {
+const CartElement = ({ item, index }) => {
 
     const [cart, setCart] = useAtom(Cart)
     const user = useAtomValue(userAtom)
+    const [checkout, setCheckout] = useState(false)
+
+    const openCheckout = () => {
+        setCheckout(true)
+    }
+
+    const closeCheckout = () => {
+        setCheckout(false)
+    }
 
     const removeItem = () => {
         let current_cart = JSON.parse(cart)

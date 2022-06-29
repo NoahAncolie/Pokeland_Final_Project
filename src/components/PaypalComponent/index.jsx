@@ -1,7 +1,7 @@
-import React, { useEffect, useRef }  from 'react'
+import React, { useEffect, useRef } from 'react'
 import "assets/styles/paypal.scss"
 
-const PaypalComponent = ({product_price, saveOrder, closeCheckout}) => {
+const PaypalComponent = ({ product_price, saveOrder, closeCheckout }) => {
 
     const paypal = useRef()
 
@@ -33,9 +33,11 @@ const PaypalComponent = ({product_price, saveOrder, closeCheckout}) => {
     }, [product_price])
 
     return (
-        <div className="checkout-div">
-            <button className="close-btn" onClick={() => {closeCheckout()}}>X</button>
-            <div ref={paypal}></div>
+        <div className="row">
+            <div className="checkout-div col-lg-4 col-md-4">
+                <button className="close-btn" onClick={() => { closeCheckout() }}>X</button>
+                <div ref={paypal}></div>
+            </div>
         </div>
     )
 }
