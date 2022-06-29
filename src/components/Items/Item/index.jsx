@@ -2,11 +2,12 @@ import { Link } from "react-router-dom"
 import { Cart } from "store/atoms"
 import { useAtom } from "jotai"
 import Cookies from "js-cookie"
-
+import { useAlert } from "react-alert";
 
 const Item = ({ item }) => {
 
     const [cart, setCart] = useAtom(Cart)
+    const alert = useAlert()
 
     const addToCart = () => {
         let current_cart = JSON.parse(cart)
@@ -16,6 +17,7 @@ const Item = ({ item }) => {
             sameSite: "none",
             secure: true
         })
+        alert.success(`${item.name} ajouté au Panier ! 🧺`)
     }
 
     return (

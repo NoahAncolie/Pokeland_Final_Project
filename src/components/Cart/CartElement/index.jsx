@@ -3,12 +3,14 @@ import { Cart, userAtom } from "store/atoms"
 import Cookies from "js-cookie"
 import PaypalComponent from "components/PaypalComponent"
 import { useState } from "react"
+import { useAlert } from "react-alert"
 
 const CartElement = ({ item, index }) => {
 
     const [cart, setCart] = useAtom(Cart)
     const user = useAtomValue(userAtom)
     const [checkout, setCheckout] = useState(false)
+    const alert = useAlert()
 
     const openCheckout = () => {
         setCheckout(true)
@@ -26,6 +28,7 @@ const CartElement = ({ item, index }) => {
             sameSite: "none",
             secure: true
         })
+        alert.info(`${item.name} retiré du panier.`)
     }
 
     const buyProduct = () => {
@@ -40,7 +43,6 @@ const CartElement = ({ item, index }) => {
                 product_id: item.id
             })
         })
-        alert('Produit Acheté !')
     }
 
     return (

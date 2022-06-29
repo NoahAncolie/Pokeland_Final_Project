@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import "assets/styles/paypal.scss"
+import { useAlert } from 'react-alert'
 
 const PaypalComponent = ({ product_price, saveOrder, closeCheckout }) => {
 
     const paypal = useRef()
+    const alert = useAlert()
 
     useEffect(() => {
         window.paypal.Buttons({
@@ -25,6 +27,7 @@ const PaypalComponent = ({ product_price, saveOrder, closeCheckout }) => {
                 saveOrder()
                 const order = await actions.order.capture()
                 console.log(order)
+                alert.success('Commande passée !')
             },
             onError: (error) => {
                 console.log(error)
