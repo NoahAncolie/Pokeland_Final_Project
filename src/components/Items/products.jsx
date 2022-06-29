@@ -10,6 +10,7 @@ const Products = () => {
     
     const loadProducts = (datas) => {
         setProducts(JSON.stringify(datas))
+        setFilteredResults(datas)
         console.log(datas)
     }
 
