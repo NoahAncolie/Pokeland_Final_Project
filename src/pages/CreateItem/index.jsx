@@ -6,7 +6,6 @@ import { userAtom, JWT } from "store/atoms";
 const CreateItem = () => {
 
     const user = useAtomValue(userAtom);
-    let userParsed;
     const jwt = useAtomValue(JWT);
     const [ name, setName ] = useState("");
     const [ price, setPrice ] = useState("");
@@ -21,10 +20,6 @@ const CreateItem = () => {
     
     
     function fetchData(e) {
-        if(user !== "") {
-         userParsed = JSON.parse(user);
-        }
-        console.log(userParsed.id);
         console.log(image);
         const form = document.getElementById("form");
         const formData = Array.from(new FormData(form));
@@ -46,7 +41,7 @@ const CreateItem = () => {
           "condition": condition,
           "year": year,
           "image": formData[7][1],
-          "user_id": userParsed.id
+          "user_id": user.id
         },
       }),
     }).then((response) => {
