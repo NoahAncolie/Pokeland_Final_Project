@@ -8,6 +8,7 @@
     min-height: 100vh;
     max-height: 100%;
     background-color: var(--grey);
+    animation: 1s slideIn ease-in-out;
 }
 
 .products-title {
@@ -59,6 +60,10 @@
 
 .card-price {
     padding: 10px 0;
+}
+
+@keyframes slideIn {
+    0% {transform: translateY(100%);}
 }
 
 // .product {
