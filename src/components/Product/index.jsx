@@ -71,7 +71,7 @@ const Product = () => {
                 <div className="col-lg-4 col-md-3 col-sm-0">
                 </div>
                 <div className="col-lg-4 col-md-6 product">
-                    <img href={product.image_path} alt="pokemon" />
+                    <img className="card-img" src={product.image_path} alt="pokemon" />
                     <h3 className="gameboy-text">{product.name}</h3>
                     <p>Pays d'origine : <span className="timesNew">{product.country}</span></p>
                     <p>Description : <span className="timesNew">{product.description}</span></p>

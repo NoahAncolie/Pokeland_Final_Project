@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import Item from './Item';
 import "assets/styles/products.scss"
 import "assets/styles/searchbar.scss"
+
+
 const Products = () => {
     const [ products, setProducts] = useState([]);
     const [ searchInput, setSearchInput ] = useState("");
