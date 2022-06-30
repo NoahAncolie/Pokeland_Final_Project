@@ -16,6 +16,7 @@ import Footer from 'components/Footer';
 import Product from 'components/Product';
 import CartComponent from 'components/Cart';
 import CreateItem from 'pages/CreateItem';
+import NotFound from 'pages/NotFound'
 
 
 const App = () => {
@@ -36,6 +37,7 @@ const options = {
                 <Navbar />
                 {user.id ? <CartComponent/> : <></>}
                 <Routes>
+                    <Route path="*" element={<NotFound />} />
                     <Route path="/" element={<Home />} />
                     <Route path="/items" element={<Products />} />
                     <Route path="/register" element={<RegisterForm />} />
@@ -43,7 +45,7 @@ const options = {
                     <Route path="/forgotpassword" element={<ForgotPassword />} />
                     <Route path="/profile" element={<Profile/>} />
                     <Route path="/product/:productId" element={<Product />} />
-                    <Route path="/createitem" element={<CreateItem />} />
+                    <Route path="/createitem" element={ user.email === "admin@admin.com" ? <CreateItem />:<NotFound /> } />
                 </Routes>
                 </AlertProvider>
             </Router>

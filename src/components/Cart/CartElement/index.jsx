@@ -46,27 +46,19 @@ const CartElement = ({ item, index }) => {
     }
 
     return (
-        <>
-              <>
-          <div className="row">
-                <div className="col-lg-4 col-md-3 col-sm-0">
-                </div>
-                <div className="col-lg-4 col-md-6 product">
-                    <img href={item.image_path} alt="pokemon" />
-                    <h3 className="gameboy-text">{item.name}</h3>
-                    <p>Pays d'origine : <span className="timesNew">{item.country}</span></p>
-                    <p>Description : <span className="timesNew">{item.description}</span></p>
-                    <p>Prix : <span className="timesNew">{item.price}&euro;</span></p>
+        <div className="product">
+            <img href={item.image_path} alt="pokemon" />
+            <h3 className="gameboy-text">{item.name}</h3>
+            <p>Pays d'origine : <span className="timesNew">{item.country}</span></p>
+            <p>Description : <span className="timesNew">{item.description}</span></p>
+            <p>Prix : <span className="timesNew">{item.price}&euro;</span></p>
             <div className="row">
-                <div className="col">
-                    <button className="card-link dark-link remove-link timesNew" onClick={removeItem}>Enlever du Panier</button>
+                <div className="col-lg-6">
+                <button className="card-link dark-link remove-link timesNew" onClick={removeItem}>Enlever du Panier</button>
                 </div>
             </div>
             {checkout ? <PaypalComponent product_price={item.price} saveOrder={buyProduct} closeCheckout={closeCheckout} /> : <></>}
-           </div>
-           </div>
-        </>
-        </>
+        </div>
     )
 }
 
