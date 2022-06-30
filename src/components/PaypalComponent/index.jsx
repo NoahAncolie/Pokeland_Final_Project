@@ -25,8 +25,8 @@ const PaypalComponent = ({ product_price, saveOrder, closeCheckout }) => {
             },
             onApprove: async (data, actions) => {
                 saveOrder()
+                closeCheckout()
                 const order = await actions.order.capture()
-                console.log(order)
                 alert.success('Commande passée !')
             },
             onError: (error) => {

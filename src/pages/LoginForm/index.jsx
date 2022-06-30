@@ -33,7 +33,6 @@ const LoginForm = () => {
                 },
             }),
         }).then((response) => {
-          console.log(response);
           setToken(response.headers.get("Authorization"));
           Cookies.set('token', response.headers.get("Authorization"),{
             sameSite: "none",
@@ -41,7 +40,6 @@ const LoginForm = () => {
           })  
           return (response.json())
         }).then((response) => {
-          console.log(response.user);
           response.user.password = "**Crypted**"
           setUser(response.user);
           Cookies.set('user', JSON.stringify(response.user), {
