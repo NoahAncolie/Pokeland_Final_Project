@@ -15,12 +15,8 @@ const Navbar = () => {
     const setCart = useSetAtom(Cart);
     const setAdmin = useSetAtom(isAdmin);
     const jwt = useAtomValue(JWT);
-    const user = useAtomValue(userAtom);
     const admin = useAtomValue(isAdmin);
     const alert = useAlert();
-    console.log(Cookies.get("isAdmin"));
-    console.log(jwt);
-    console.log(user);
 
     const ToggleNav = () => {
         document.getElementById('ball').classList.toggle('pokeball-animation')
@@ -51,6 +47,10 @@ const Navbar = () => {
             secure: true
         })
         Cookies.remove('user', {
+            sameSite: "none",
+            secure: true
+        })
+        Cookies.remove('cart', {
             sameSite: "none",
             secure: true
         })

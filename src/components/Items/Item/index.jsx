@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import { Cart } from "store/atoms"
-import { useAtom } from "jotai"
+import { Cart, userAtom } from "store/atoms"
+import { useAtom, useAtomValue } from "jotai"
 import Cookies from "js-cookie"
 import { useAlert } from "react-alert";
 
@@ -8,6 +8,7 @@ const Item = ({ item }) => {
 
     const [cart, setCart] = useAtom(Cart)
     const alert = useAlert()
+    const user = useAtomValue(userAtom)
 
     const addToCart = () => {
         let current_cart = JSON.parse(cart)
@@ -36,9 +37,11 @@ const Item = ({ item }) => {
                 <div className="col">
                     <Link to={`/product/${item.id}`} className="card-link timesNew">Voir</Link>
                 </div>
+                {user.id ? 
                 <div className="col">
                     <button className="card-link timesNew" onClick={addToCart}>Panier</button>
-                </div>
+                </div> 
+                : <></>}
             </div>
         </div>
     )
