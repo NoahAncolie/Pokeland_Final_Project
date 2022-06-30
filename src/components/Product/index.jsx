@@ -77,14 +77,17 @@ const Product = () => {
                     <p>Description : <span className="timesNew">{product.description}</span></p>
                     <p>Prix : <span className="timesNew">{product.price}&euro;</span></p>
                     <p>Quantité : <span className="timesNew">{product.stock}</span></p>
-                    <div className="row">
-                        <div className="col-lg-6 col-md-6">
-                            <button className="card-link timesNew" onClick={openCheckout}>Acheter</button>
+                    {user.id ?
+                        <div className="row">
+                            <div className="col-lg-6 col-md-6">
+                                <button className="card-link timesNew" onClick={openCheckout}>Acheter</button>
+                            </div>
+                            <div className="col-lg-6 col-md-6">
+                                <button className="card-link timesNew" onClick={addToCart}>Panier</button>
+                            </div>
                         </div>
-                        <div className="col-lg-6 col-md-6">
-                            <button className="card-link timesNew" onClick={addToCart}>Panier</button>
-                        </div>
-                    </div>
+                        : <></>
+                    }
                 </div>
             </div>
             {checkout ? <PaypalComponent product_price={product.price} saveOrder={buyProduct} closeCheckout={closeCheckout} /> : <></>}
