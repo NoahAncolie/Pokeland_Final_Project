@@ -1,5 +1,6 @@
 import { useAtom, useAtomValue } from "jotai";
 import { userAtom, JWT } from "store/atoms";
+import Cookies from "js-cookie";
 import "assets/styles/profile.scss";
 
 
@@ -7,7 +8,6 @@ import "assets/styles/profile.scss";
 const Profile = () => {
     const [user, setUser] = useAtom(userAtom);
     const jwt = useAtomValue(JWT)
-    console.log(user)
 
     const editUser = () => {
         let form = document.getElementById('editForm')
@@ -17,9 +17,12 @@ const Profile = () => {
         current_user[formData[1][0]] = formData[1][1] === "" ? current_user[formData[1][0]] : formData[1][1]
         current_user[formData[2][0]] = formData[2][1] === "" ? current_user[formData[2][0]] : formData[2][1]
         current_user[formData[3][0]] = formData[3][1] === "" ? current_user[formData[3][0]] : formData[3][1]
-        setUser(JSON.stringify(current_user))
+        setUser(current_user)
         sendToDB(current_user)
-        console.log(Array.from(formData))
+        Cookies.set('user', JSON.stringify(current_user), {
+            sameSite: "none",
+            secure: true
+          }) 
     }
 
     const sendToDB = (user) => {
