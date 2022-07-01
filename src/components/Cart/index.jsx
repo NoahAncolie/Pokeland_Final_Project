@@ -92,7 +92,7 @@ const CartComponent = () => {
                         {cartElements.map((item, index) => (
                             <CartElement item={item} key={item.id} index={index} />
                         ))}
-                        {total ? <button className="cart-btn timesNew" onClick={openCheckout}>Procéder au payment ({total}&euro;)</button> : <><p id="empty-cart"></p></>}
+                        {total ? <button className="cart-btn timesNew" onClick={openCheckout}>Procéder au paiement ({total}&euro;)</button> : <><p id="empty-cart"></p></>}
                     </div>
                 </div>
             </div>
