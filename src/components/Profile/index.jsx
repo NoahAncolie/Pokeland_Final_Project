@@ -64,7 +64,7 @@ const Profile = () => {
             setUser([]);
             setCart(JSON.stringify([]))
             setAdmin("false");
-            alert.success("Votre compte à été supprimer 🙁")
+            alert.success("Votre compte à été supprimé 🙁")
             navigate("/");
         })
         .catch((error) => console.error(error))
