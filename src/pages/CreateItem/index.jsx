@@ -18,12 +18,8 @@ const CreateItem = () => {
 
 
 
-  function fetchData(e) {
-    //console.log(image);
-    //const form = document.getElementById("form");
-    //const formData = Array.from(new FormData(form));
-    //console.log(formData);
-    e.preventDefault();
+  function fetchData() {
+    console.log(image);
     fetch("https://pokeland-api.herokuapp.com/products", {
       method: "post",
       headers: {
@@ -62,7 +58,7 @@ const CreateItem = () => {
             </h2>
           </header>
 
-          <form id="" onSubmit={fetchData} >
+          <form id="" onSubmit={(event) => {event.preventDefault(); fetchData(); }} >
             <div className="row">
               <div className="col-lg-6">
                 <div>
