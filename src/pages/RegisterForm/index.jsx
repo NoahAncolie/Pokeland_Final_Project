@@ -20,6 +20,10 @@ const RegisterForm = () => {
 
   function fetchData(e) {
     e.preventDefault();
+    if (password !== passwordConfirm) {
+      alert.error('Les mot de passe doivent être identiques.')
+      return (1)
+    }
     fetch("https://pokeland-api.herokuapp.com/users", {
       method: "post",
       headers: {
