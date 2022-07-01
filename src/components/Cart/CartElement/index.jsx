@@ -12,9 +12,6 @@ const CartElement = ({ item, index }) => {
     const [checkout, setCheckout] = useState(false)
     const alert = useAlert()
 
-    const openCheckout = () => {
-        setCheckout(true)
-    }
 
     const closeCheckout = () => {
         setCheckout(false)
