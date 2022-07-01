@@ -1,27 +1,31 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useAlert } from "react-alert";
 
 const ForgotPassword = () => {
 
   const [email, setEmail] = useState("");
+  const alert = useAlert()
 
   function sendMail() {
 
-    fetch("https://pokeland-api.herokuapp.com/users/password", {
-      method: "post",
+    fetch(`https://pokeland-api.herokuapp.com/users/password/${email}`, {
+      method: "get",
       headers: {
         "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user: {
-          email: email,
-        },
-      }),
+      }
     }).then((response) => {
-      console.log(response)
-        .catch((err) => console.error(err));
+      return response.json()
     })
+    .then((response) => {
+      if (response.success) {
+        alert.success(response.message)
+      } else
+      {
+        alert.error(response.message)
+      }
+    })
+    .catch((err) => console.error(err));
   }
 
   return (
@@ -34,7 +38,7 @@ const ForgotPassword = () => {
               Entre ton email ici. 👇
             </h2>
           </header>
-          <form className="" id="form" onSubmit={sendMail} >
+          <form className="" id="form" onSubmit={(event) => {event.preventDefault(); sendMail()}} >
             <div className="">
               <input
                 type="email"

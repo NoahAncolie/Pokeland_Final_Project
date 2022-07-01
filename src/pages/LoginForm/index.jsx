@@ -12,59 +12,64 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-    const setToken = useSetAtom(JWT);
-    const setUser = useSetAtom(userAtom);
-    const setAdmin = useSetAtom(isAdmin);
-    const navigate = useNavigate();
-    const alert = useAlert();
+  const setToken = useSetAtom(JWT);
+  const setUser = useSetAtom(userAtom);
+  const setAdmin = useSetAtom(isAdmin);
+  const navigate = useNavigate();
+  const alert = useAlert();
 
   function fetchData(e) {
 
-        e.preventDefault();
-        fetch("https://pokeland-api.herokuapp.com/users/sign_in", {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                user: {
-                    email: email,
-                    password: password,
-                },
-            }),
-        }).then((response) => {
-          setToken(response.headers.get("Authorization"));
-          Cookies.set('token', response.headers.get("Authorization"),{
-            sameSite: "none",
-            secure: true
-          })  
-          return (response.json())
-        }).then((response) => {
-          response.user.password = "**Crypted**"
-          setUser(response.user);
-          Cookies.set('user', JSON.stringify(response.user), {
-            sameSite: "none",
-            secure: true
-          }) 
-          if(response.user.email === "admin@admin.com"){
-            setAdmin("true");
-            Cookies.set('isAdmin', "true", {
-              sameSite: "none",
-              secure: true
-            })
-          } else {
-            setAdmin("false");
-            Cookies.set('isAdmin', "false", {
-              sameSite: "none",
-              secure: true
-            })
-          }
+    e.preventDefault();
+    fetch("https://pokeland-api.herokuapp.com/users/sign_in", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        user: {
+          email: email,
+          password: password,
+        },
+      }),
+    }).then((response) => {
+      setToken(response.headers.get("Authorization"));
+      Cookies.set('token', response.headers.get("Authorization"), {
+        sameSite: "none",
+        secure: true
+      })
+      return (response.json())
+    }).then((response) => {
+      if (response.user) {
+        response.user.password = "**Crypted**"
+        setUser(response.user);
+        Cookies.set('user', JSON.stringify(response.user), {
+          sameSite: "none",
+          secure: true
         })
+        if (response.user.email === "admin@admin.com") {
+          setAdmin("true");
+          Cookies.set('isAdmin', "true", {
+            sameSite: "none",
+            secure: true
+          })
+        } else {
+          setAdmin("false");
+          Cookies.set('isAdmin', "false", {
+            sameSite: "none",
+            secure: true
+          })
+        }
         setTimeout(function () {
           navigate('/')
         }, 500);
         alert.success("Connexion réussie 🌎");
+      } else {
+        alert.error("Un problème est survenu. Veuillez Réessayer.")
       }
+    })
+
+  }
 
 
   return (
