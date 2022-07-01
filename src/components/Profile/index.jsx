@@ -1,13 +1,20 @@
-import { useAtom, useAtomValue } from "jotai";
-import { userAtom, JWT } from "store/atoms";
+import { useAtom, useSetAtom, useAtomValue } from "jotai";
+import { userAtom, JWT, isAdmin, Cart } from "store/atoms";
+import { useAlert } from "react-alert";
+import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import "assets/styles/profile.scss";
 
 
 
 const Profile = () => {
-    const [user, setUser] = useAtom(userAtom);
-    const jwt = useAtomValue(JWT)
+    const [ user, setUser ] = useAtom(userAtom);
+    const setToken = useSetAtom(JWT);
+    const setCart = useSetAtom(Cart);
+    const setAdmin = useSetAtom(isAdmin);
+    const jwt = useAtomValue(JWT);
+    const alert = useAlert();
+    const navigate = useNavigate();
 
     const editUser = () => {
         let form = document.getElementById('editForm')
@@ -43,6 +50,26 @@ const Profile = () => {
         }).catch((error) => console.error(error))
     }
 
+    const deleteAccount = () => {
+        fetch("https://pokeland-api.herokuapp.com/users", {
+            method: "delete",
+            headers: {
+                "Authorization": jwt,
+                "Content-Type": "application/json"
+            }
+        })
+        .then((response) => {return response.json()})
+        .then(() => {
+            setToken("");
+            setUser([]);
+            setCart(JSON.stringify([]))
+            setAdmin("false");
+            alert.success("Votre compte à été supprimer 🙁")
+            navigate("/");
+        })
+        .catch((error) => console.error(error))
+    }
+
     return (
         <div className="form-background">
             <div className="row">
@@ -70,6 +97,8 @@ const Profile = () => {
                             <input type="submit" className="cart-btn edit-btn" value="Enregistrer" />
                         </form>
                     </div>
+                    <button className="card-link dark-link remove-link timesNew" onClick={() => {if(window.confirm('Voulez-vous vraiment supprimer votre compte ?'))
+            {deleteAccount()}}} >Supprimer mon compte</button>
                 </div>
             </div>
         </div>
