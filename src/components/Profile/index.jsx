@@ -1,13 +1,23 @@
+import { useEffect } from "react";
 import { useAtom, useSetAtom, useAtomValue } from "jotai";
 import { userAtom, JWT, isAdmin, Cart } from "store/atoms";
 import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import "assets/styles/profile.scss";
-
+import  AOS  from 'aos';
+import "aos/dist/aos.css";
 
 
 const Profile = () => {
+
+    useEffect(() => {
+        AOS.init({
+            duration: 1000
+        })
+    }, []);
+   
+
     const [ user, setUser ] = useAtom(userAtom);
     const setToken = useSetAtom(JWT);
     const setCart = useSetAtom(Cart);
@@ -75,7 +85,7 @@ const Profile = () => {
             <div className="row">
                 <div className="col-lg-3 col-md-3 col-sm-0"></div>
                 <div className="col-lg-6">
-                    <div className="gb-body">
+                    <div data-aos="flip-right" className="gb-body">
                         <div className="screen-outer">
                             <div className="user-card row">
                                 <div className="col-lg-6 col-md-6">
