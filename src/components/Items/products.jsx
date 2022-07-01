@@ -1,13 +1,19 @@
 import { useEffect, useState } from 'react';
 import Item from './Item';
+import Masonry from 'react-masonry-css';
 import "assets/styles/products.scss"
 import "assets/styles/searchbar.scss"
 const Products = () => {
-    const [ products, setProducts] = useState([]);
-    const [ searchInput, setSearchInput ] = useState("");
-    const [ filteredResults, setFilteredResults ] = useState([]);
-    
-    
+    const [products, setProducts] = useState([]);
+    const [searchInput, setSearchInput] = useState("");
+    const [filteredResults, setFilteredResults] = useState([]);
+    const breakpointColumnsObj = {
+        default: 4,
+        1100: 3,
+        700: 2,
+        500: 1
+    };
+
     const loadProducts = (datas) => {
         setProducts(JSON.stringify(datas))
         setFilteredResults(datas)
@@ -16,19 +22,19 @@ const Products = () => {
 
     const searchItems = (searchValue) => {
         setSearchInput(searchValue);
-       // console.log(searchValue);
-       const parsedProducts = JSON.parse(products);
+        // console.log(searchValue);
+        const parsedProducts = JSON.parse(products);
         if (searchInput !== "") {
-        const filteredProducts = parsedProducts.filter((item) => {
-          return Object.values(item)
-          .join('').toLowerCase()
-          .includes(searchInput.toLowerCase());  
-        })
-         setFilteredResults(filteredProducts);
+            const filteredProducts = parsedProducts.filter((item) => {
+                return Object.values(item)
+                    .join('').toLowerCase()
+                    .includes(searchInput.toLowerCase());
+            })
+            setFilteredResults(filteredProducts);
         } else {
-         setFilteredResults(parsedProducts);
+            setFilteredResults(parsedProducts);
         }
-       // console.log(filteredProducts);
+        // console.log(filteredProducts);
     }
 
     useEffect(() => {
@@ -38,13 +44,14 @@ const Products = () => {
                 "Content-Type": "application/json"
             }
         }
-        ).then((response) => { 
+        ).then((response) => {
             console.log(response)
-            return response.json() })
+            return response.json()
+        })
             .then((response) => {
-            console.log(response);
-            loadProducts(response)
-    })
+                console.log(response);
+                loadProducts(response)
+            })
     }, [])
 
     return (
@@ -55,18 +62,20 @@ const Products = () => {
                     <input className="searchBar" type="text" placeholder="Recherche..." onChange={(e) => searchItems(e.target.value)} ></input>
                 </div>
             </div>
-            <div className="row">
-                { searchInput.length !== "" ?
-                 filteredResults.map(item => (
-                    item.stock > 0 ?
-                    <div className="col-lg-4 col-md-6">
-                        <Item item={item} key={item.id} />
-                    </div> : <></>
-                )) : <></>
+            <Masonry
+                breakpointCols={breakpointColumnsObj}
+                className="my-masonry-grid"
+                columnClassName="my-masonry-grid_column"
+            >
+                {searchInput.length !== "" ?
+                    filteredResults.map(item => (
+                        item.stock > 0 ?
+                            <Item item={item} key={item.id} />
+                            : <></>
+                    )) : <></>
                 }
-             
-            </div>
-        </div>
+            </ Masonry>
+        </div >
     )
 }
 

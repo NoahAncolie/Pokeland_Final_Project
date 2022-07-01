@@ -28,6 +28,7 @@
     margin: 5%;
     border: 2px solid var(--blue);
     border-radius: 2px;
+    box-shadow: 0 0 20px var(--transparent-dark-blue);
 }
 
 .card-link {
@@ -69,3 +70,30 @@
 // .product {
 //     margin-top: 15vh !important;
 // }
+
+.list-image {
+    max-width: 100%;
+    padding: 5px;
+}
+
+.my-masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: -30px; /* gutter size offset */
+    width: auto;
+  }
+  .my-masonry-grid_column {
+    padding-left: 30px; /* gutter size */
+    background-clip: padding-box;
+  }
+
+  .price-number {
+    color: var(--blue);
+  }
+
+  .card-name {
+    text-decoration: underline;
+    text-decoration-color: var(--blue);
+    text-decoration-thickness: 2px;
+  }

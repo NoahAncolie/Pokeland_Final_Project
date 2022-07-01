@@ -25,14 +25,14 @@ const Item = ({ item }) => {
         <div className="item-card">
             <div className="row">
                 <div className="col">
-                    <img href={item.image_path} alt="pokemon" />
-                    <p>{item.name}</p>
+                    <img src={item.image_path} alt="pokemon" className="list-image"/>
+                    <p className="card-name">{item.name}</p>
                     <p className="timesNew">{item.description}</p>
                 </div>
             </div>
             <div className="row">
                 <div className="col">
-                    <p className="card-price timesNew">Prix : {item.price}&euro;</p>
+                    <p className="card-price timesNew">Prix : <span className="price-number">{item.price}&euro;</span></p>
                 </div>
                 <div className="col">
                     <Link to={`/product/${item.id}`} className="card-link timesNew">Voir</Link>
