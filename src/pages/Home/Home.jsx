@@ -5,7 +5,7 @@ import "assets/styles/rondoudou.scss"
 const Home = () => {
 
     useEffect(() => {
-        console.log('Hello bg')
+        console.log('Welcome')
     });
 
     return (
@@ -17,13 +17,13 @@ const Home = () => {
                     <p>Sur ce site, vous pourrez...</p>
                     <ul className='webInfo-list'>
                         <li>
-                            Trouver des cartes pokémons rares.<br/><br/>
+                            Trouver des cartes pokémons communes et rares.<br/><br/>
                         </li>
                         <li>
-                            Commander ces cartes auprès de collectionneurs.<br/><br/>
+                            Commander et acheter vos produits préférés.<br/><br/>
                         </li>
                         <li>
-                            Enregistrer les plus belles cartes dans vos favoris.<br/><br/>
+                            Enregistrer vos produits dans votre panier.<br/><br/>
                         </li>
                     </ul>
                 </div>
