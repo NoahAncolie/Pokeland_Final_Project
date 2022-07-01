@@ -30,6 +30,15 @@
     border-radius: 2px;
     box-shadow: 0 0 10px var(--transparent-dark-blue);
     text-align: center;
+    transition: 0.15s ease-in-out;
+}
+
+.item-card:hover {
+    transform: scale(1.03);
+    background-color: rgba(245, 245, 245, 0.746);
+    border-color: var(--dark-blue);
+    border-radius: 10px;
+    box-shadow: 0 0 30px var(--transparent-dark-blue);
 }
 .card-img {
     height: 28vh;
@@ -80,6 +89,7 @@
 .list-image {
     max-width: 100%;
     padding: 5px;
+    margin-top: 15px;
 }
 
 .my-masonry-grid {
