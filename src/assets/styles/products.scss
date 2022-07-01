@@ -24,12 +24,18 @@
 }
 
 .item-card {
-    width: 90%;
+    width: 93.2%;
     margin: 5%;
     border: 2px solid var(--blue);
     border-radius: 2px;
-    box-shadow: 0 0 20px var(--transparent-dark-blue);
+    box-shadow: 0 0 10px var(--transparent-dark-blue);
+    text-align: center;
 }
+.card-img {
+    height: 28vh;
+    min-width: max-content;
+}
+
 
 .card-link {
     display: block;
@@ -80,11 +86,11 @@
     display: -webkit-box; /* Not needed if autoprefixing */
     display: -ms-flexbox; /* Not needed if autoprefixing */
     display: flex;
-    margin-left: -30px; /* gutter size offset */
+    margin-left: -10px; /* gutter size offset */
     width: auto;
   }
   .my-masonry-grid_column {
-    padding-left: 30px; /* gutter size */
+    padding-left: 10px; /* gutter size */
     background-clip: padding-box;
   }
 
@@ -96,4 +102,12 @@
     text-decoration: underline;
     text-decoration-color: var(--blue);
     text-decoration-thickness: 2px;
+    margin-top: 10px;
+  }
+
+  .description {
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }

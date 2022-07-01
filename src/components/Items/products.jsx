@@ -3,6 +3,8 @@ import Item from './Item';
 import Masonry from 'react-masonry-css';
 import "assets/styles/products.scss"
 import "assets/styles/searchbar.scss"
+
+
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [searchInput, setSearchInput] = useState("");

@@ -153,10 +153,10 @@ const CreateItem = () => {
               </div>
               <div className="col-lg-6 ">
                 <div>
-                <input
+                  <input
                     type="text"
                     placeholder="url de l'image"
-                    name="image2"
+                    name="image"
                     id="image"
                     value={image}
                     className="form__input"

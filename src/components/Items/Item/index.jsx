@@ -27,7 +27,7 @@ const Item = ({ item }) => {
                 <div className="col">
                     <img src={item.image_path} alt="pokemon" className="list-image"/>
                     <p className="card-name">{item.name}</p>
-                    <p className="timesNew">{item.description}</p>
+                    <p className="timesNew description">{item.description}</p>
                 </div>
             </div>
             <div className="row">
