@@ -48,7 +48,7 @@ const CartElement = ({ item, index }) => {
     return (
         <div className="product">
             <img src={item.image_path} alt="pokemon" className="cart-image"/>
-            <h3 className="gameboy-text">{item.name}</h3>
+            <h3 className="gameboy-text card-name">{item.name}</h3>
             <p>Pays d'origine : <span className="timesNew">{item.country}</span></p>
             <p>Description : <span className="timesNew">{item.description}</span></p>
             <p>Prix : <span className="timesNew">{item.price}&euro;</span></p>
