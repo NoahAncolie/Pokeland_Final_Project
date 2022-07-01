@@ -18,8 +18,6 @@ const Product = () => {
     const alert = useAlert()
     const navigate = useNavigate();
     const jwt = useAtomValue(JWT);
-    const setToken = useSetAtom(JWT);
-    const setAdmin = useSetAtom(isAdmin);
     const admin = useAtomValue(isAdmin);
 
     const openCheckout = () => {

@@ -1,7 +1,7 @@
 import cart from 'assets/images/3D_cart.png'
 import 'assets/styles/cart.scss'
 import { useAtomValue } from 'jotai'
-import { Cart, userAtom } from 'store/atoms'
+import { Cart, userAtom ,isAdmin} from 'store/atoms'
 import CartElement from './CartElement'
 import { useEffect, useState } from 'react'
 import PaypalComponent from '../PaypalComponent'
@@ -13,6 +13,7 @@ const CartComponent = () => {
     const user = useAtomValue(userAtom)
     const [total, setTotal] = useState(0)
     const [checkout, setCheckout] = useState(false)
+    const admin = useAtomValue(isAdmin);
 
     const toggleCaddie = () => {
         document.getElementsByClassName('caddie')[0].classList.toggle('closed-caddie')
@@ -77,7 +78,12 @@ const CartComponent = () => {
 
     return (
         <>
+        {admin === "false" ?
+        <>
             <img src={cart} alt="3d-caddie" className='cart-picture' onClick={() => { toggleCaddie(); addEmptyText(); }} />
+        </>
+        :null 
+        }
             <div className="caddie closed-caddie">
                 <h1 className="products-title">Votre Panier.</h1>
                 <div className="row">
@@ -91,7 +97,8 @@ const CartComponent = () => {
                 </div>
             </div>
             {checkout ? <PaypalComponent product_price={total} saveOrder={buyProducts} closeCheckout={closeCheckout} /> : <></>}
-        </>
+      
+            </>
     )
 }
 
