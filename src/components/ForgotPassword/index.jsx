@@ -15,9 +15,11 @@ const ForgotPassword = () => {
         "Content-Type": "application/json"
       }
     }).then((response) => {
+      console.log(response)
       return response.json()
     })
     .then((response) => {
+      console.log(response)
       if (response.success) {
         alert.success(response.message)
       } else

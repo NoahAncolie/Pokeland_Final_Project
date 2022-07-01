@@ -1,10 +1,12 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
-import { Cart, userAtom } from "store/atoms"
-import { useAtom, useAtomValue } from "jotai"
+import { Cart, userAtom , isAdmin , JWT} from "store/atoms"
+import { useAtom, useAtomValue, useSetAtom } from "jotai"
 import Cookies from "js-cookie"
 import PaypalComponent from "components/PaypalComponent"
 import { useAlert } from "react-alert"
+import { useNavigate } from "react-router-dom";
+
 
 const Product = () => {
 
@@ -14,6 +16,9 @@ const Product = () => {
     const user = useAtomValue(userAtom)
     const [checkout, setCheckout] = useState(false)
     const alert = useAlert()
+    const navigate = useNavigate();
+    const jwt = useAtomValue(JWT);
+    const admin = useAtomValue(isAdmin);
 
     const openCheckout = () => {
         setCheckout(true)
@@ -64,6 +69,28 @@ const Product = () => {
             .then((response) => loadProduct(response))
     }, [params.productId])
 
+
+   
+
+    const deleteProduct = () => {
+        fetch(`https://pokeland-api.herokuapp.com/products/${params.productId}`, {
+            method: "delete",
+            headers: {
+                "Authorization": jwt,
+                "Content-Type": "application/json"
+            }
+        })
+        
+        .then(() => {
+            alert.success("Le produit a été suprimé!")
+            navigate("/items");
+        })
+        .catch((error) => console.error(error))
+
+       
+    }
+
+
     return (
         <div className="products-bg">
             <h1 className="products-title">Produit.</h1>
@@ -85,7 +112,16 @@ const Product = () => {
                             <div className="col-lg-6 col-md-6">
                                 <button className="card-link timesNew" onClick={addToCart}>Panier</button>
                             </div>
-                        </div>
+
+                        {admin === "true" ?
+                            <>
+                            <button className="card-link dark-link remove-link timesNew" onClick={deleteProduct}>supprimer</button>
+                            </>
+                        :null
+                        }
+                            
+                            
+                            </div>
                         : <></>
                     }
                 </div>
