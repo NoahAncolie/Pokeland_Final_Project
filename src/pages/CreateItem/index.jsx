@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useAtomValue } from "jotai";
 import { userAtom, JWT } from "store/atoms";
+import { useAlert } from "react-alert";
+import { useNavigate } from "react-router-dom";
 
 const CreateItem = () => {
 
@@ -14,7 +16,8 @@ const CreateItem = () => {
   const [condition, setCondition] = useState("");
   const [year, setYear] = useState("");
   const [image, setImage] = useState("");
-
+  const alert = useAlert();
+  const navigate = useNavigate();
 
 
 
@@ -43,7 +46,9 @@ const CreateItem = () => {
       console.log(response);
       return response.json()
     })
-      .catch((err) => console.error(err));
+    .catch((err) => console.error(err));
+      alert.info("Produit ajouté à la liste ✓");
+      navigate("/items");
   };
 
 
