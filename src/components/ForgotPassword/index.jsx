@@ -10,7 +10,7 @@ const ForgotPassword = () => {
   function sendMail() {
 
     fetch(`https://pokeland-api.herokuapp.com/users/password/${email}`, {
-      method: "get",
+      method: "post",
       headers: {
         "Content-Type": "application/json"
       }
