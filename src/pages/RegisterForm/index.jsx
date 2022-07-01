@@ -39,30 +39,34 @@ const RegisterForm = () => {
       })
       return response.json()
     }).then((response) => {
-      response.user.password = "**Crypted**"
-      setUser(response.user);
-      Cookies.set('user', JSON.stringify(response.user), {
-        sameSite: "none",
-        secure: true
-      })
-      if(response.user.email === "admin@admin.com"){
-        setAdmin("true");
-        Cookies.set('isAdmin', "true", {
+      if (response.success) {
+        response.user.password = "**Crypted**"
+        setUser(response.user);
+        Cookies.set('user', JSON.stringify(response.user), {
           sameSite: "none",
           secure: true
         })
+        if (response.user.email === "admin@admin.com") {
+          setAdmin("true");
+          Cookies.set('isAdmin', "true", {
+            sameSite: "none",
+            secure: true
+          })
+        } else {
+          setAdmin("false");
+          Cookies.set('isAdmin', "false", {
+            sameSite: "none",
+            secure: true
+          })
+        }
+        setTimeout(function () {
+          navigate('/')
+        }, 500);
+        alert.success("Inscription réussie 🤓");
       } else {
-        setAdmin("false");
-        Cookies.set('isAdmin', "false", {
-          sameSite: "none",
-          secure: true
-        })
+        alert.error("Cette adresse email est déjà utilisée. ")
       }
     })
-    setTimeout(function () {
-      navigate('/')
-    }, 500);
-    alert.success("Inscription réussie 🤓");
   };
 
 
