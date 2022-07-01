@@ -32,7 +32,8 @@ const Profile = () => {
         Cookies.set('user', JSON.stringify(datas), {
             sameSite: "none",
             secure: true
-          }) 
+          })
+          navigate("/");
     }
 
     const editUser = () => {
