@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import { Cart, userAtom , isAdmin , JWT} from "store/atoms"
-import { useAtom, useAtomValue, useSetAtom } from "jotai"
+import { useAtom, useAtomValue } from "jotai"
 import Cookies from "js-cookie"
 import PaypalComponent from "components/PaypalComponent"
 import { useAlert } from "react-alert"
