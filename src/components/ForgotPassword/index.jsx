@@ -15,9 +15,7 @@ const ForgotPassword = () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        user: {
-          email: email
-        }
+        email: email
       })
     }).then((response) => {
       console.log(response)
