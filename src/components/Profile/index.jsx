@@ -26,6 +26,16 @@ const Profile = () => {
     const alert = useAlert();
     const navigate = useNavigate();
 
+    const updateUser = (datas) => {
+        setUser(datas)
+        sendToDB(datas)
+        Cookies.set('user', JSON.stringify(datas), {
+            sameSite: "none",
+            secure: true
+          })
+          navigate("/");
+    }
+
     const editUser = () => {
         let form = document.getElementById('editForm')
         let formData = Array.from(new FormData(form))
@@ -34,12 +44,7 @@ const Profile = () => {
         current_user[formData[1][0]] = formData[1][1] === "" ? current_user[formData[1][0]] : formData[1][1]
         current_user[formData[2][0]] = formData[2][1] === "" ? current_user[formData[2][0]] : formData[2][1]
         current_user[formData[3][0]] = formData[3][1] === "" ? current_user[formData[3][0]] : formData[3][1]
-        setUser(current_user)
-        sendToDB(current_user)
-        Cookies.set('user', JSON.stringify(current_user), {
-            sameSite: "none",
-            secure: true
-          }) 
+        updateUser(current_user)
     }
 
     const sendToDB = (user) => {
@@ -58,6 +63,7 @@ const Profile = () => {
                 },
             })
         }).catch((error) => console.error(error))
+        alert.success('Profil enregistré !')
     }
 
     const deleteAccount = () => {
