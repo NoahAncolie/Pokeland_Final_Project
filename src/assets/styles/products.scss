@@ -28,7 +28,17 @@
     margin: 5%;
     border: 2px solid var(--blue);
     border-radius: 2px;
+    box-shadow: 0 0 10px var(--transparent-dark-blue);
     text-align: center;
+    transition: 0.15s ease-in-out;
+}
+
+.item-card:hover {
+    transform: scale(1.03);
+    background-color: rgba(245, 245, 245, 0.746);
+    border-color: var(--dark-blue);
+    border-radius: 10px;
+    box-shadow: 0 0 30px var(--transparent-dark-blue);
 }
 .card-img {
     height: 28vh;
@@ -75,3 +85,39 @@
 // .product {
 //     margin-top: 15vh !important;
 // }
+
+.list-image {
+    max-width: 100%;
+    padding: 5px;
+    margin-top: 15px;
+}
+
+.my-masonry-grid {
+    display: -webkit-box; /* Not needed if autoprefixing */
+    display: -ms-flexbox; /* Not needed if autoprefixing */
+    display: flex;
+    margin-left: -10px; /* gutter size offset */
+    width: auto;
+  }
+  .my-masonry-grid_column {
+    padding-left: 10px; /* gutter size */
+    background-clip: padding-box;
+  }
+
+  .price-number {
+    color: var(--blue);
+  }
+
+  .card-name {
+    text-decoration: underline;
+    text-decoration-color: var(--blue);
+    text-decoration-thickness: 2px;
+    margin-top: 10px;
+  }
+
+  .description {
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
