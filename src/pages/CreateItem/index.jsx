@@ -19,10 +19,10 @@ const CreateItem = () => {
 
 
   function fetchData(e) {
-    console.log(image);
-    const form = document.getElementById("form");
-    const formData = Array.from(new FormData(form));
-    console.log(formData);
+    //console.log(image);
+    //const form = document.getElementById("form");
+    //const formData = Array.from(new FormData(form));
+    //console.log(formData);
     e.preventDefault();
     fetch("https://pokeland-api.herokuapp.com/products", {
       method: "post",
@@ -39,7 +39,7 @@ const CreateItem = () => {
           "stock": stock,
           "condition": condition,
           "year": year,
-          "image": formData[7][1],
+          "image_path": image,
           "user_id": user.id
         },
       }),
@@ -158,12 +158,13 @@ const CreateItem = () => {
               <div className="col-lg-6 ">
                 <div>
                   <input
-                    type="file"
-                    name="image2"
+                    type="text"
+                    placeholder="url de l'image"
+                    name="image"
                     id="image"
-                    value={""}
+                    value={image}
                     className="form__input"
-                    onChange={(e) => setImage(e.target.files[0])}
+                    onChange={(e) => setImage(e.target.value)}
                   />
                 </div>
               </div>

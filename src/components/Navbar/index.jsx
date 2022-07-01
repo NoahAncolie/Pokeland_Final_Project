@@ -54,7 +54,7 @@ const Navbar = () => {
             sameSite: "none",
             secure: true
         })
-        Cookies.remove('cart', {
+        Cookies.remove('isAdmin', {
             sameSite: "none",
             secure: true
         })

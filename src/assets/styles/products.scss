@@ -24,11 +24,17 @@
 }
 
 .item-card {
-    width: 90%;
+    width: 93.2%;
     margin: 5%;
     border: 2px solid var(--blue);
     border-radius: 2px;
+    text-align: center;
 }
+.card-img {
+    height: 28vh;
+    min-width: max-content;
+}
+
 
 .card-link {
     display: block;
